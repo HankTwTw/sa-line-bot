@@ -23,7 +23,7 @@ const config = {
 app.use(express.static('public'));
 
 app.get('/send-id', function(req, res) {
-    res.json({id: myLiffId});
+    res.json({id: process.env.myLiffId});
 });
   
 
