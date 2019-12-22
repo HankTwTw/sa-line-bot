@@ -48,7 +48,7 @@ function initializeApp() {
     liff.scanCode().then(result => {
         // e.g. result = { value: "Hello LIFF app!" }
         const stringifiedResult = result;
-        window.alert('result' + result);
+        window.alert('result' + result.value);
         liff.closeWindow();
     }).catch(err => {
         liff.closeWindow();
