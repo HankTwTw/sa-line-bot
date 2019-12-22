@@ -45,21 +45,22 @@ function initializeLiff(myLiffId) {
  */
 function initializeApp() {
     
-    // liff.scanCode().then(result => {
-    //     // e.g. result = { value: "Hello LIFF app!" }
-    //     const stringifiedResult = result;
-    //     window.alert('result' + result.value);
-    //     liff.closeWindow();
-    // }).catch(err => {
-    //     liff.closeWindow();
-    // });
-    // liff.getProfile().then(function(profile) {
-    //     profile.userId;
-    //     profile.displayName;
-    //     profile.pictureUrl
-    // }).catch(function(error) {
-    //     window.alert('Error getting profile: ' + error);
-    // });
+    liff.scanCode().then(result => {
+        // e.g. result = { value: "Hello LIFF app!" }
+        const stringifiedResult = result;
+        window.alert('result' + result.value);
+        // liff.closeWindow();
+    }).catch(err => {
+        // liff.closeWindow();
+    });
+
+    liff.getProfile().then(function(profile) {
+        new QRCode(document.getElementById("qrcode"), profile.userId);
+        // profile.displayName;
+        // profile.pictureUrl
+    }).catch(function(error) {
+        window.alert('Error getting profile: ' + error);
+    });
     // liff.closeWindow();
     // liff.sendMessages([{
     //     'type': 'text',
