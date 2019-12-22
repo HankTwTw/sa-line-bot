@@ -48,9 +48,10 @@ function initializeApp() {
     liff.scanCode().then(result => {
         // e.g. result = { value: "Hello LIFF app!" }
         const stringifiedResult = result;
-        document.getElementsByClassName("hello").textContent(result)
+        window.alert('result' + result);
+        liff.closeWindow();
     }).catch(err => {
-        
+        liff.closeWindow();
     });
     // liff.getProfile().then(function(profile) {
     //     profile.userId;
