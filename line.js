@@ -1,6 +1,6 @@
 'use strict'
 var line = require("@line/bot-sdk")
-var express = require("express")
+var app = require("express")
 const config = {
     channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN,
     channelSecret: process.env.CHANNEL_SECRET,
@@ -34,6 +34,6 @@ const config = {
   
 
   const port = process.env.PORT || 8080;
-  express.listen(port, () => {
+  app.listen(port, () => {
     console.log(`listening on ${port}`);
   });
