@@ -12,8 +12,6 @@ const config = {
   // register a webhook handler with middleware
   // about the middleware, please refer to doc
   app.post('/', line.middleware(config), (req, res) => {
-        console.log(config)
-        console.log(process.env.PORT)
         console.log(req.body.events)
         Promise.all(req.body.events.map(handleEvent))
         .then((result) => res.json(result))
@@ -22,6 +20,11 @@ const config = {
             res.status(500).end();
         });
   });
+app.use(express.static('public'));
+
+app.get('/send-id', function(req, res) {
+    res.json({id: myLiffId});
+});
   
 
   function handleEvent(event) {
