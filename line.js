@@ -46,6 +46,7 @@ app.get('/send-id', function(req, res) {
   
 
   async function handleEvent(event) {
+    console.error(event);
     var userId=event.source.userId
     var userName;
     var userImg;
