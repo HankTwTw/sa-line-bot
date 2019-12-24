@@ -59,7 +59,7 @@ app.get('/send-id', function(req, res) {
       case "message":
         break;
       case "follow":
-        admin.database().ref("user/"+userId).set({"name":userName,"userId":userId,"userImg":userImg})
+        admin.database().ref("user/"+userId).set({"name":userName,"userId":userId,"userImg":userImg,"cash":0})
         break;
       case "beacon":
         break;
