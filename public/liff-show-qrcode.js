@@ -45,17 +45,24 @@ function initializeLiff(myLiffId) {
  */
 function initializeApp() {
     
-    liff.scanCode().then(result => {
-        // e.g. result = { value: "Hello LIFF app!" }
-        const stringifiedResult = result;
-        window.alert('result' + result.value);
-        // liff.closeWindow();
-    }).catch(err => {
-        // liff.closeWindow();
-    });
+    // liff.scanCode().then(result => {
+    //     // e.g. result = { value: "Hello LIFF app!" }
+    //     const stringifiedResult = result;
+    //     window.alert('result' + result.value);
+    //     // liff.closeWindow();
+    // }).catch(err => {
+    //     // liff.closeWindow();
+    // });
 
     liff.getProfile().then(function(profile) {
-        new QRCode(document.getElementById("qrcode"), profile.userId);
+        new QRCode(document.getElementById("qrcode"),  {
+            text: profile.userId,
+            width: 256,
+            height: 256,
+            colorDark : '#000000',
+            colorLight : '#ffffff',
+            correctLevel : QRCode.CorrectLevel.H
+          });
     }).catch(function(error) {
         window.alert('Error getting profile: ' + error);
     });
