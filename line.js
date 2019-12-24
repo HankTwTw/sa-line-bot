@@ -41,7 +41,7 @@ var firebaseConfig = {
 app.use(express.static('public'));
 
 app.get('/send-id', function(req, res) {
-    res.json({id: process.env.myLiffId});
+    res.json({show_id: process.env.myLiffId_show,scan_id: process.env.myLiffId_scan});
 });
   
 

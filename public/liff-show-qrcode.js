@@ -14,7 +14,7 @@ window.onload = function() {
                 return reqResponse.json();
             })
             .then(function(jsonResponse) {
-                myLiffId = jsonResponse.id;
+                myLiffId = jsonResponse.show_id;
                 initializeLiff(myLiffId);
             })
             .catch(function(error) {
