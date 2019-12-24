@@ -13,13 +13,33 @@
     <body>
         
         
-        <div class="hello">
-            hello
+        <div id="qrcode" >
+		</div>
+		<div id="qrcode_text">
+			掃描此條碼後，可使用交易功能
         </div>
-        <div id="qrcode">
-
+        
         </div>
         <script src="liff-show-qrcode.js"></script>
 
     </body>
+    <style type="text/css">
+        #qrcode{
+            height: 300px;width: 300px;
+            padding-left: 44px;
+            padding-top: 44px;
+            margin:0 auto;
+            border-style:solid;
+        }
+        #qrcode_text{
+            padding-top: 15px;
+            height: 300px;width: 800px;
+            text-align: center;
+            margin:0 auto;
+            font-weight:bold;
+            font-size: 50px
+    
+        }
+    
+    </style>
 </html>
