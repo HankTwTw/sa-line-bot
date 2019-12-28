@@ -67,7 +67,7 @@ async function initializeApp() {
         window.alert(result.value)
         firebase.database().ref("user/"+value).once("value",function(snap){
             
-            console(snap.val().name)
+            console.log(snap.val().name)
             window.alert("value"+value+"val"+snap.val().name)
             document.getElementById("name_").innerHTML=snap.val().name;
         })
