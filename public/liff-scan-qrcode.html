@@ -4,6 +4,12 @@
         <script src="qrcode.js"></script>
         <script src="qrcode.min.js"></script>
         <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,7 +55,7 @@ a, img { border: none; }
         <div class="wxzf_price">$1190</div>
     </div>
     <div class="skf_xinf">
-         <div class="all_w"> 送給送給送給</div>
+         <div class="all_w"> 送給<span id="name_"></span></div>
     </div>
     <a href="javascript:void(0);" class="ljzf_but all_w">立即發送</a> 
 </div>
@@ -59,7 +65,7 @@ a, img { border: none; }
         <div id="qrcode">
 
         </div>
-       <!--  <script src="liff-scan-qrcode.js"></script> -->
+        <script src="liff-scan-qrcode.js"></script>
 
     </body>
 </html>
