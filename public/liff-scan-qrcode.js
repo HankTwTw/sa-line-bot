@@ -72,9 +72,9 @@ function initializeApp() {
             document.getElementById("name_").innerHTML=snap.val().name;
         })
         
-        
+        window.alert(result.value)
     }).catch(err => {
-        // liff.closeWindow();
+        window.alert(err)
     });
 
 
