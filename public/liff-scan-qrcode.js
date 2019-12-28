@@ -44,7 +44,7 @@ function initializeLiff(myLiffId) {
 /**
  * Initialize the app by calling functions handling individual app components
  */
-function initializeApp() {
+async function initializeApp() {
     var firebaseConfig = {
         apiKey: "AIzaSyB_v9rhe7uhubTFT8_-rNlCagL_QzSRxS8",
         authDomain: "sasa-ec240.firebaseapp.com",
@@ -65,7 +65,7 @@ function initializeApp() {
         const stringifiedResult = result;
         var value = result.value
         window.alert(result.value)
-        firebase.database().ref("user/"+value).once("value",function(snap){
+        await firebase.database().ref("user/"+value).once("value",function(snap){
             
             console(snap.val().name)
             window.alert("value"+value+"val"+snap.val().name)
