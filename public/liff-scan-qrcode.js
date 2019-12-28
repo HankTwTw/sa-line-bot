@@ -64,13 +64,14 @@ function initializeApp() {
         // e.g. result = { value: "Hello LIFF app!" }
         const stringifiedResult = result;
         var value = result.value
+        window.alert(result.value)
         firebase.database().ref("user/"+value).on("value",function(snap){
             
             console(snap.val().name)
-            alert("value"+value+"val"+snap.val().name)
+            window.alert("value"+value+"val"+snap.val().name)
             document.getElementById("name_").innerHTML=snap.val().name;
         })
-        window.alert(result.value);
+        
         
     }).catch(err => {
         // liff.closeWindow();
