@@ -65,7 +65,7 @@ async function initializeApp() {
         const stringifiedResult = result;
         var value = result.value
         window.alert(result.value)
-        await firebase.database().ref("user/"+value).once("value",function(snap){
+        firebase.database().ref("user/"+value).once("value",function(snap){
             
             console(snap.val().name)
             window.alert("value"+value+"val"+snap.val().name)
