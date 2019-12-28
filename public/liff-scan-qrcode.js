@@ -65,7 +65,7 @@ function initializeApp() {
         const stringifiedResult = result;
         var value = result.value
         window.alert(result.value)
-        firebase.database().ref("user/"+value).on("value",function(snap){
+        firebase.database().ref("user/"+value).once("value",function(snap){
             
             console(snap.val().name)
             window.alert("value"+value+"val"+snap.val().name)
