@@ -1,17 +1,6 @@
 
 window.onload = function() {
-    var firebaseConfig = {
-        apiKey: "AIzaSyB_v9rhe7uhubTFT8_-rNlCagL_QzSRxS8",
-        authDomain: "sasa-ec240.firebaseapp.com",
-        databaseURL: "https://sasa-ec240.firebaseio.com",
-        projectId: "sasa-ec240",
-        storageBucket: "sasa-ec240.appspot.com",
-        messagingSenderId: "673434458765",
-        appId: "1:673434458765:web:0090d396b25000aa10e0c4",
-        measurementId: "G-HDTQ10VYRJ"
-      };
-      // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+    
     const useNodeJS = true;   // if you are not using a node server, set this value to false
     const defaultLiffId = "";   // change the default LIFF value if you are not using a node server
 
@@ -56,6 +45,18 @@ function initializeLiff(myLiffId) {
  * Initialize the app by calling functions handling individual app components
  */
 function initializeApp() {
+    var firebaseConfig = {
+        apiKey: "AIzaSyB_v9rhe7uhubTFT8_-rNlCagL_QzSRxS8",
+        authDomain: "sasa-ec240.firebaseapp.com",
+        databaseURL: "https://sasa-ec240.firebaseio.com",
+        projectId: "sasa-ec240",
+        storageBucket: "sasa-ec240.appspot.com",
+        messagingSenderId: "673434458765",
+        appId: "1:673434458765:web:0090d396b25000aa10e0c4",
+        measurementId: "G-HDTQ10VYRJ"
+      };
+      // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
    
 
     
@@ -63,9 +64,10 @@ function initializeApp() {
         // e.g. result = { value: "Hello LIFF app!" }
         const stringifiedResult = result;
         var value = result.value
-        firebase.database().ref("user/"+result.value).on("value",function(snap){
+        firebase.database().ref("user/"+value).on("value",function(snap){
             
             console(snap.val().name)
+            alert("value"+value+"val"+snap.val().name)
             document.getElementById("name_").innerHTML=snap.val().name;
         })
         window.alert(result.value);
