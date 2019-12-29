@@ -71,7 +71,6 @@ window.onload = function() {
             })
             .then(function(jsonResponse) {
                 myLiffId = jsonResponse.business_register;
-                window.alert(myLiffId)
                 initializeLiff(myLiffId);
             })
             .catch(function(error) {
@@ -83,7 +82,6 @@ window.onload = function() {
     }
 };
 function initializeLiff(myLiffId) {
-    window.alert(myLiffId)
     var firebaseConfig = {
         apiKey: "AIzaSyB_v9rhe7uhubTFT8_-rNlCagL_QzSRxS8",
         authDomain: "sasa-ec240.firebaseapp.com",
@@ -117,7 +115,6 @@ async function initializeApp() {
     liff.getProfile().then(function(profile) {
         name = profile.displayName
         user_Id = profile.userId
-        window.alert(user_Id)
         firebase.database().ref("user/"+user_Id).once("value").then(function(snapshot) {
             
             is_business = snapshot.hasChild("isbusiness")
