@@ -78,9 +78,9 @@ async function initializeApp() {
 function scan(){
     liff.scanCode().then(result => {
         // e.g. result = { value: "Hello LIFF app!" }
-        const stringifiedResult = result;
+        const stringifiedResult = result.value;
         console.log(result.value)
-        var value = result.value.spilt("&");
+        var value = stringifiedResult.spilt("&");
         var user_Id = value[0];
         var name = value[1];
         console.log(value)
