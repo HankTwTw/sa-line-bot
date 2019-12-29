@@ -80,7 +80,7 @@ function scan(){
         // e.g. result = { value: "Hello LIFF app!" }
         const stringifiedResult = result.value;
         console.log(result.value)
-        var value = stringifiedResult.spilt("&");
+        var value = stringifiedResult.split("&");
         var user_Id = value[0];
         var name = value[1];
         console.log(value)
