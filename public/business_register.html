@@ -112,11 +112,13 @@ function initializeLiff(myLiffId) {
 var have_money,scan_user_Id,name,user_Id,is_business;
 
 async function initializeApp() {
-    
+   
     liff.getProfile().then(function(profile) {
         name = profile.displayName
         user_Id = profile.userId
+        window.alert(user_Id)
         firebase.database().ref("user/"+user_Id).once("value").then(function(snapshot) {
+            
             is_business = snapshot.hasChild("isbusiness")
             if(is_business){
                 window.alert("您已經是商家")
@@ -127,6 +129,7 @@ async function initializeApp() {
     })
 }
 function submit(){
+    
     var business_name = document.getElementById("business_name").value
     var goods_name = document.getElementById("goods_name").value
     var goods_price = document.getElementById("goods_price").value
