@@ -44,7 +44,7 @@ function initializeLiff(myLiffId) {
 /**
  * Initialize the app by calling functions handling individual app components
  */
-var have_money,user_Id,name;
+var have_money,scan_user_Id,name,user_Id;
 
 async function initializeApp() {
     var firebaseConfig = {
@@ -67,9 +67,11 @@ async function initializeApp() {
    
     liff.getProfile().then(function(profile) {
         // profile.displayName
+        user_Id=profile.userId
         firebase.database().ref("user/"+profile.userId).once("value",function(snap){
             console.log(snap.val().name)
             have_money=snap.val().cash;
+            
     })
     }).catch(function(error) {
         window.alert('Error getting profile: ' + error);
@@ -96,7 +98,7 @@ function scan(){
         const stringifiedResult = result.value;
         console.log(result.value)
         var value = stringifiedResult.split("&");
-        user_Id = value[0];
+        scan_user_Id = value[0];
         name = value[1];
         document.getElementById("button_scan").innerHTML="送給"+name;
     }).catch(err => {
@@ -106,15 +108,12 @@ function scan(){
 }
 function send_money(){
     var dollar = document.getElementById("typing_dollar").value
-    
-    if(dollar==null){dollar=0}
-    if(confirm("確定要給?"+name+dollar+"元嗎? 你有"+have_money+"元")){
-       // firebase.database().ref("user/"+value).once("value",function(snap){
-   
-       //     console.log(snap.val().name)
-       //     window.alert("value"+value+"val"+name)
-           
-       // })
+    if(have_money>dollar){window.alert("您的錢只有"+have_money+"哦，請先參加活動賺取樂幣")}
+    else if(confirm("確定要給?"+name+dollar+"元嗎? 你有"+have_money+"元")){
+       firebase.database().ref("user/"+scan_user_Id).once("value",function(snap){
+           firebase.database().ref("user/"+scan_user_Id).set(snap.val().cash+dollar)
+           firebase.database().ref("user/"+user_Id).set(have_money-dollar)
+       })
     }
 }
 
