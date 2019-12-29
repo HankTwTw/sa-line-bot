@@ -57,25 +57,12 @@ async function initializeApp() {
       };
       // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-   
+    document.getElementById("button_scan").innerHTML="請點選我掃描QRCODE";
+    
+    scan()
 
     
-    liff.scanCode().then(result => {
-        // e.g. result = { value: "Hello LIFF app!" }
-        const stringifiedResult = result;
-        var value = result.value
-        window.alert(result.value)
-        firebase.database().ref("user/"+value).once("value",function(snap){
-            
-            console.log(snap.val().name)
-            window.alert("value"+value+"val"+snap.val().name)
-            document.getElementById("name_").innerHTML=snap.val().name;
-        })
-        
-        window.alert(result.value)
-    }).catch(err => {
-        window.alert(err)
-    });
+    
 
 
     // liff.closeWindow();
@@ -87,6 +74,35 @@ async function initializeApp() {
     // }).catch(function(error) {
     //     window.alert('Error sending message: ' + error);
     // });
+}
+function scan(){
+    liff.scanCode().then(result => {
+        // e.g. result = { value: "Hello LIFF app!" }
+        const stringifiedResult = result;
+        var value = result.value.split("&");
+        var user_Id = value[0];
+        var name = value[1];
+        window.alert(result.value)
+
+        document.getElementById("name_").innerHTML=name;
+        document.getElementById("submit_btn").addEventListener("click",function(){
+                 var dollar = document.getElementById("typing_dollar").value
+                 if(confirm("確實要給?"+name+dollar+"元嗎?")){
+                    // firebase.database().ref("user/"+value).once("value",function(snap){
+                
+                    //     console.log(snap.val().name)
+                    //     window.alert("value"+value+"val"+name)
+                        
+                    // })
+                 }
+        })
+        
+        
+       
+    }).catch(err => {
+       
+        
+    });
 }
 
 
