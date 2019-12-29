@@ -35,7 +35,11 @@
     <form>
         <div class="form-group">
             <label for="exampleFormControlInput1">請輸入商家名稱</label>
-            <input type="text" class="form-control" id="business_name" placeholder="">
+            <input type="file"class="form-control" id="good_pic" accept="image/gif, image/jpeg, image/png, image/jpg"/>
+        </div>
+        <div class="form-group">
+                <label for="exampleFormControlInput1">請上傳商品照片</label>
+                <input type="text" class="form-control" id="goods_name" placeholder="">
         </div>
         <div class="form-group">
             <label for="exampleFormControlInput1">請輸入商品名稱</label>
@@ -125,17 +129,29 @@ async function initializeApp() {
         
     })
 }
-function submit(){
+async function submit(){
+    var good_pic = document.getElementById("good_pic").files[0]
     var business_name = document.getElementById("business_name").value
     var goods_name = document.getElementById("goods_name").value
     var goods_price = document.getElementById("goods_price").value
+    var downloadURL
+    await firebase.storage().ref("imagess/"+uuidv4()).put(good_pic).then( function(snapshot) {
+        downloadURL=snapshot.downloadURL
+        console.log('Uploaded a blob or file!');
+    });
     firebase.database().ref("user/"+user_Id).update({"business_name":business_name,"isbusiness":true})
-    var value = firebase.database().ref("goods").push({"goods_name":goods_name,"goods_price":goods_price})
+    var value = firebase.database().ref("goods").push({"goods_name":goods_name,"goods_price":goods_price,"downloadURL":downloadURL})
     firebase.database().ref("goods/"+value.key+"/"+user_Id).set(true)
     window.alert("註冊成功")
     liff.closeWindow();
 }
 
+function uuidv4() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
 
 
 </script>

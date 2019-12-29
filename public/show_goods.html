@@ -34,7 +34,14 @@
         }
         #submit{
             width: 100%;
-        }
+		}
+		img{
+			width:150px;
+			height: 150px;
+		}
+		.custom-table-width{
+			width: 170px;
+		}
 	</style>
 	<body>
 		
@@ -42,6 +49,7 @@
 	<table class="table table-striped">
 			<thead>
 			  <tr>
+				<th scope="col"class="custom-table-width">圖片</th>
 				<th scope="col">名稱</th>
 				<th scope="col">價格</th>
 				<th scope="col">操作</th>
@@ -49,10 +57,11 @@
 			</thead>
 			<tbody>
 					<tr>
-							<th scope="row">1</th>
-							<td>Mark</td>
-							<td><button type="button" class="btn btn-danger">刪除</button></td>
-						</tr>
+						<th ><img src="https://i.imgur.com/oResbob.jpg" alt=""></th>
+						<th scope="row">1</th>
+						<td>Mark</td>
+						<td><button type="button" class="btn btn-danger">刪除</button></td>
+					</tr>
 
 			</tbody>
 		</table>
@@ -66,6 +75,8 @@
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-body">
+								<label for="exampleFormControlInput1">商品照片</label>
+								<input type="file"class="form-control" id="good_pic" accept="image/gif, image/jpeg, image/png, image/jpg"/>
 								<label for="exampleFormControlInput1">商品名稱</label>
 								<input type="text" class="form-control" id="business_name" placeholder="">
 								<label for="exampleFormControlInput1">商品價格</label>
@@ -88,13 +99,7 @@
 
    
 		<% 
-		<tr>
-			<th scope="row">1</th>
-			<td>Mark</td>
-			<td>Otto</td>
-			<td> <button type="button" class="btn btn-default">Button1</button>
-				<button type="button" class="btn btn-default">Button2</button></td>
-		</tr>
+		
 		   
 		<%}%>
 	</script>
@@ -140,7 +145,27 @@
 					measurementId: "G-HDTQ10VYRJ"
 				  };
 				  // Initialize Firebase
-				firebase.initializeApp(firebaseConfig);
+				// firebase.initializeApp(firebaseConfig);
+				// firebase.database().ref("/competes/"+firebase_game_key_all).orderByChild("competeOrder/group").on('value', function(snapshot) {
+				// 	snapshot.foreach(function(snap){
+				// 		s
+				// 	})
+					// let data={items:datas}
+					// let html = template(document.getElementById('tpl').innerHTML,data);
+					// document.getElementById('sortable').innerHTML = html;
+					// datas=[]
+
+					// function set_data(name,key,group,check,pic){
+					// 	datas.push({'name':name,'key':group+'&'+key,'group':group,'name_key':name+"&"+key,'pic':pic})
+					// }
+					// async function database(key,group,check) {
+					// 		return firebase.database().ref('users/' + key).once('value').then(function (child) {
+					// 			return set_data(child.val().name,key,group,check,child.val().profileImageUrl)
+					// 		})
+					// 	}
+				// });
+
+
 				liff.init({
 						liffId: myLiffId
 					})
@@ -158,20 +183,25 @@
 			var have_money,scan_user_Id,name,user_Id,is_business;
 			
 			async function initializeApp() {
-				liff.getProfile().then(function(profile) {
-					name = profile.displayName
-					user_Id = profile.userId
-					firebase.database().ref("user/"+user_Id).once("value").then(function(snapshot) {
+				// liff.getProfile().then(function(profile) {
+				// 	name = profile.displayName
+				// 	user_Id = profile.userId
+				// 	firebase.database().ref("user/"+user_Id).once("value").then(function(snapshot) {
 						
-						is_business = snapshot.hasChild("isbusiness")
-						if(is_business){
-							window.alert("您已經是商家")
-							liff.closeWindow();
-						}
-					});
+				// 		is_business = snapshot.hasChild("isbusiness")
+				// 		if(is_business){
+				// 			window.alert("您已經是商家")
+				// 			liff.closeWindow();
+				// 		}
+				// 	});
 					
-				})
+				// })
 			}
+			
+
+
+
+			
 
 			
 			
