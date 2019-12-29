@@ -2,6 +2,8 @@
 var line = require("@line/bot-sdk")
 var express = require("express")
 var admin = require("firebase-admin")
+var line_message = require("./line_object.js")
+
 const config = {
     channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN,
     channelSecret: process.env.CHANNEL_SECRET,
@@ -46,7 +48,8 @@ app.get('/send-id', function(req, res) {
   
 
   async function handleEvent(event) {
-    console.error(event);
+    console.log(event);
+    var orginal_text =  event.message.text
     var userId=event.source.userId
     var userName;
     var userImg;
@@ -58,6 +61,10 @@ app.get('/send-id', function(req, res) {
     });
     switch (event.type){
       case "message":
+        if(orginal_text=="/申請成為商家")
+        {
+          
+        }
         break;
       case "follow":
         admin.database().ref("user/"+userId).set({"name":userName,"userId":userId,"userImg":userImg,"cash":0})
@@ -66,12 +73,12 @@ app.get('/send-id', function(req, res) {
         break;
     }
 
-    if (event.type !== 'message' || event.message.type !== 'text') {
-      return Promise.resolve(null);
-    }
-    const echo = { type: 'text', text: event.message.text };
+    // if (event.type !== 'message' || event.message.type !== 'text') {
+    //   return Promise.resolve(null);
+    // }
+    // const echo = { type: 'text', text: event.message.text };
 
-    return client.replyMessage(event.replyToken, echo);
+    // return client.replyMessage(event.replyToken, echo);
   }
   
 

@@ -108,11 +108,11 @@ function scan(){
 }
 function send_money(){
     console.log(document.getElementById("typing_dollar").value)
-    var dollar = parseInt(document.getElementById("typing_dollar").value)
-    if(dollar==NaN){
+    if(document.getElementById("typing_dollar").value==""){
         window.alert("請輸入金額")
         return
     }
+    var dollar = parseInt(document.getElementById("typing_dollar").value)
     if(dollar>have_money){window.alert("您的錢只有"+have_money+"哦，請先參加活動賺取樂幣")}
     else if(confirm("確定要給?"+name+dollar+"元嗎? 你有"+have_money+"元")){
        firebase.database().ref("user/"+scan_user_Id).once("value",function(snap){

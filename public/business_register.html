@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <style>
+         
+        .center{
+            width:50%;
+            margin: 0 auto;
+        }
+        #submit{
+            width: 100%;
+        }
+    </style>
+    <form>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">請輸入商家名稱</label>
+            <input type="text" class="form-control" id="business_name" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">請輸入商品名稱</label>
+            <input type="text" class="form-control" id="goods_name" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">請輸入商品價格</label>
+            <input type="number" class="form-control" id="goods_price" placeholder="">
+        </div>
+       
+      </form>
+      <div class="center">
+            <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+      </div>
+     
+    
+</body>
+<script>
+window.onload = function() {
+    
+    const useNodeJS = true;   // if you are not using a node server, set this value to false
+    const defaultLiffId = "";   // change the default LIFF value if you are not using a node server
+
+    // DO NOT CHANGE THIS
+    let myLiffId = "";
+
+    // if node is used, fetch the environment variable and pass it to the LIFF method
+    // otherwise, pass defaultLiffId
+    if (useNodeJS) {
+        fetch('/send-id')
+            .then(function(reqResponse) {
+                return reqResponse.json();
+            })
+            .then(function(jsonResponse) {
+                myLiffId = jsonResponse.business_register;
+                initializeLiff(myLiffId);
+            })
+            .catch(function(error) {
+                
+            });
+    } else {
+        myLiffId = defaultLiffId;
+        initializeLiff(myLiffId);
+    }
+};
+function initializeLiff(myLiffId) {
+    liff
+        .init({
+            liffId: myLiffId
+        })
+        .then(() => {
+            initializeApp();
+        })
+        .catch((err) => {
+        
+        });
+}
+
+/**
+ * Initialize the app by calling functions handling individual app components
+ */
+var have_money,scan_user_Id,name,user_Id;
+
+async function initializeApp() {
+
+    
+}
+
+
+
+</script>
+</html>
