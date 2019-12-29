@@ -63,10 +63,11 @@ app.get('/send-id', function(req, res) {
       case "message":
         if(orginal_text=="/申請成為商家")
         {
-          
+          client.replyMessage(event.replyToken,line_message.getting_business_setting())
         }
         break;
       case "follow":
+        client.replyMessage(event.replyToken,line_message.getting_business_setting())
         admin.database().ref("user/"+userId).set({"name":userName,"userId":userId,"userImg":userImg,"cash":0})
         break;
       case "beacon":
