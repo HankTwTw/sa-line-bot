@@ -5,52 +5,176 @@
 		<meta charset="UTF-8">
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+		<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-app.js"></script>
+		<!-- Add Firebase products that you want to use -->
+		<script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
+		<!-- TODO: Add SDKs for Firebase products that you want to use
+			https://firebase.google.com/docs/web/setup#available-libraries -->
+		<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title>网站后台管理模版</title>
-		<link rel="stylesheet" type="text/css" href="./layui.css" />
-		<link rel="stylesheet" type="text/css" href="./admin.css" />
+		<title>商品管理</title>
+
 	</head>
+	<style>
+		body{
+			font-size: 20px;
+			text-align: center;
+		}
+		.center{
+            width:50%;
+            margin: 0 auto;
+        }
+        #submit{
+            width: 100%;
+        }
+	</style>
+	<body>
+		
+	
+	<table class="table table-striped">
+			<thead>
+			  <tr>
+				<th scope="col">名稱</th>
+				<th scope="col">價格</th>
+				<th scope="col">操作</th>
+			  </tr>
+			</thead>
+			<tbody>
+					<tr>
+							<th scope="row">1</th>
+							<td>Mark</td>
+							<td><button type="button" class="btn btn-danger">刪除</button></td>
+						</tr>
 
-	<body class="iframe-h gray-bg">
-		<div class="wrap-container column-wrap clearfix">
-					<div class="layui-form" id="table-list">
-						<table class="layui-table" lay-even lay-skin="nob">
-							<colgroup>
-								<col class="hidden-xs" width="50">
-								<col class="hidden-xs" width="60">
-								<col width="10">
-								<col width="30">
-							</colgroup>
-							<thead>
-								<tr>
-									<th class="hidden-xs">價格</th>
-									<th>名稱</th>
-									<th>狀態</th>
-									<th>操作</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<!-- <td class="hidden-xs"><input type="text" name="title" autocomplete="off" class="layui-input" value="0" data-id="1"></td> -->
-									<td>100</td>
-									<td>玩具</td>
-									<td><button class="layui-btn layui-btn-mini layui-btn-normal">正常</button></td>
-									<td>
-										<div class="layui-inline">
-											<button class="layui-btn layui-btn-small layui-btn-normal  edit-btn" data-id="1"><i class="layui-icon">下架</i></button>
-											<button class="layui-btn layui-btn-small layui-btn-danger del-btn" data-id="1"><i class="layui-icon">刪除</i></button>
-										</div>
-									</td>
-								</tr>
-								
-							</tbody>
-						</table>
+			</tbody>
+		</table>
+		<div class="center">
+				<button type="submit" id="submit" class="btn btn-primary" onclick="" data-toggle="modal" data-target="#myModal">新增商品</button>
+		  </div>
+
+
+
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-body">
+								<label for="exampleFormControlInput1">商品名稱</label>
+								<input type="text" class="form-control" id="business_name" placeholder="">
+								<label for="exampleFormControlInput1">商品價格</label>
+								<input type="number" class="form-control" id="business_name" placeholder="">
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" 
+									data-dismiss="modal">關閉
+							</button>
+							<button type="button" class="btn btn-primary">
+								新增
+							</button>
+						</div>
 					</div>
-
-		</div>
-		<script src="./layui.js" type="text/javascript" charset="utf-8"></script>
-		<script src="./common.js" type="text/javascript" charset="utf-8"></script>
+				</div>
+			</div>
 		
 	</body>
+	<script id="tpl" type="text/html">
 
+   
+		<% 
+		<tr>
+			<th scope="row">1</th>
+			<td>Mark</td>
+			<td>Otto</td>
+			<td> <button type="button" class="btn btn-default">Button1</button>
+				<button type="button" class="btn btn-default">Button2</button></td>
+		</tr>
+		   
+		<%}%>
+	</script>
+
+
+	<script>
+			window.onload = function() {
+				
+				const useNodeJS = true;   // if you are not using a node server, set this value to false
+				const defaultLiffId = "";   // change the default LIFF value if you are not using a node server
+			
+				// DO NOT CHANGE THIS
+				let myLiffId = "";
+			
+				// if node is used, fetch the environment variable and pass it to the LIFF method
+				// otherwise, pass defaultLiffId
+				if (useNodeJS) {
+					fetch('/send-id')
+						.then(function(reqResponse) {
+							return reqResponse.json();
+						})
+						.then(function(jsonResponse) {
+							myLiffId = jsonResponse.business_register;
+							initializeLiff(myLiffId);
+						})
+						.catch(function(error) {
+							
+						});
+				} else {
+					myLiffId = defaultLiffId;
+					initializeLiff(myLiffId);
+				}
+			};
+			function initializeLiff(myLiffId) {
+				var firebaseConfig = {
+					apiKey: "AIzaSyB_v9rhe7uhubTFT8_-rNlCagL_QzSRxS8",
+					authDomain: "sasa-ec240.firebaseapp.com",
+					databaseURL: "https://sasa-ec240.firebaseio.com",
+					projectId: "sasa-ec240",
+					storageBucket: "sasa-ec240.appspot.com",
+					messagingSenderId: "673434458765",
+					appId: "1:673434458765:web:0090d396b25000aa10e0c4",
+					measurementId: "G-HDTQ10VYRJ"
+				  };
+				  // Initialize Firebase
+				firebase.initializeApp(firebaseConfig);
+				liff.init({
+						liffId: myLiffId
+					})
+					.then(() => {
+						initializeApp();
+					})
+					.catch((err) => {
+						window.alert(err)
+					});
+			}
+			
+			/**
+			 * Initialize the app by calling functions handling individual app components
+			 */
+			var have_money,scan_user_Id,name,user_Id,is_business;
+			
+			async function initializeApp() {
+				liff.getProfile().then(function(profile) {
+					name = profile.displayName
+					user_Id = profile.userId
+					firebase.database().ref("user/"+user_Id).once("value").then(function(snapshot) {
+						
+						is_business = snapshot.hasChild("isbusiness")
+						if(is_business){
+							window.alert("您已經是商家")
+							liff.closeWindow();
+						}
+					});
+					
+				})
+			}
+
+			
+			
+			
+			</script>
 </html>

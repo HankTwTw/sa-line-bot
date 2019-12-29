@@ -49,7 +49,7 @@ app.get('/send-id', function(req, res) {
 
   async function handleEvent(event) {
     console.log(event);
-    var orginal_text =  event.message.text
+    
     var userId=event.source.userId
     var userName;
     var userImg;
@@ -61,6 +61,7 @@ app.get('/send-id', function(req, res) {
     });
     switch (event.type){
       case "message":
+        var orginal_text =  event.message.text
         if(orginal_text=="/申請成為商家")
         {
           client.replyMessage(event.replyToken,line_message.getting_business_setting())

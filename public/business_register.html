@@ -111,7 +111,6 @@ function initializeLiff(myLiffId) {
 var have_money,scan_user_Id,name,user_Id,is_business;
 
 async function initializeApp() {
-   
     liff.getProfile().then(function(profile) {
         name = profile.displayName
         user_Id = profile.userId
@@ -127,11 +126,12 @@ async function initializeApp() {
     })
 }
 function submit(){
-    
     var business_name = document.getElementById("business_name").value
     var goods_name = document.getElementById("goods_name").value
     var goods_price = document.getElementById("goods_price").value
-    firebase.database().ref("user/"+user_Id).update({"business_name":business_name,"goods_name":goods_name,"goods_price":goods_price,"isbusiness":true})
+    firebase.database().ref("user/"+user_Id).update({"business_name":business_name,"isbusiness":true})
+    var value = firebase.database().ref("goods").push({"goods_name":goods_name,"goods_price":goods_price})
+    firebase.database().ref("goods/"+value.key+"/"+user_Id).set(true)
     window.alert("註冊成功")
     liff.closeWindow();
 }
