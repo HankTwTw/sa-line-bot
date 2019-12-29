@@ -61,7 +61,20 @@ async function initializeApp() {
     
     scan()
 
-    
+    var user_Id = value[0];
+    var name = value[1];
+    var have_money=0
+    liff.getProfile().then(function(profile) {
+        // profile.displayName
+        firebase.database().ref("user/"+profile.userId).once("value",function(snap){
+            console.log(snap.val().name)
+            have_money=snap.val().cash;
+    })
+    }).catch(function(error) {
+        window.alert('Error getting profile: ' + error);
+    });
+
+
     
 
 
@@ -81,33 +94,26 @@ function scan(){
         const stringifiedResult = result.value;
         console.log(result.value)
         var value = stringifiedResult.split("&");
-        var user_Id = value[0];
-        var name = value[1];
-        console.log(value)
-        console.log(value[0])
-        console.log(value[1])
-        
-
+        user_Id = value[0];
+        name = value[1];
         document.getElementById("button_scan").innerHTML="送給"+name;
-        document.getElementById("submit_btn").addEventListener("click",function(){
-                 var dollar = document.getElementById("typing_dollar").value
-                 if(dollar==null){dollar=0}
-                 if(confirm("確實要給?"+user_Id+name+dollar+"元嗎?")){
-                    // firebase.database().ref("user/"+value).once("value",function(snap){
-                
-                    //     console.log(snap.val().name)
-                    //     window.alert("value"+value+"val"+name)
-                        
-                    // })
-                 }
-        })
-        
-        
-       
     }).catch(err => {
        console.log(err)
         
     });
+}
+function send_money(){
+    var dollar = document.getElementById("typing_dollar").value
+    
+    if(dollar==null){dollar=0}
+    if(confirm("確定要給?"+name+dollar+"元嗎? 你有"+have_money+"元")){
+       // firebase.database().ref("user/"+value).once("value",function(snap){
+   
+       //     console.log(snap.val().name)
+       //     window.alert("value"+value+"val"+name)
+           
+       // })
+    }
 }
 
 
