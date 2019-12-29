@@ -44,6 +44,8 @@ function initializeLiff(myLiffId) {
 /**
  * Initialize the app by calling functions handling individual app components
  */
+var have_money,user_Id,name;
+
 async function initializeApp() {
     var firebaseConfig = {
         apiKey: "AIzaSyB_v9rhe7uhubTFT8_-rNlCagL_QzSRxS8",
@@ -61,9 +63,8 @@ async function initializeApp() {
     
     scan()
 
-    var user_Id = value[0];
-    var name = value[1];
-    var have_money=0
+    
+   
     liff.getProfile().then(function(profile) {
         // profile.displayName
         firebase.database().ref("user/"+profile.userId).once("value",function(snap){
@@ -88,6 +89,7 @@ async function initializeApp() {
     //     window.alert('Error sending message: ' + error);
     // });
 }
+
 function scan(){
     liff.scanCode().then(result => {
         // e.g. result = { value: "Hello LIFF app!" }
