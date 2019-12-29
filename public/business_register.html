@@ -135,16 +135,20 @@ function submit(){
     var goods_name = document.getElementById("goods_name").value
     var goods_price = document.getElementById("goods_price").value
     console.log("submit")
+    firebase.database().ref("user/"+user_Id).update({"business_name":business_name,"isbusiness":true})
     firebase.storage().ref("imagess/"+uuidv4()).put(good_pic).then( function(snapshot) {
         var downloadURL=snapshot.downloadURL
         console.log('Uploaded a blob or file!');
         var value = firebase.database().ref("goods").push({"goods_name":goods_name,"goods_price":goods_price,"downloadURL":downloadURL})
         firebase.database().ref("goods/"+value.key+"/"+user_Id).set(true)
+        
+    }).then(function(){
+        window.alert("註冊成功")
+        // liff.closeWindow();
     });
-    firebase.database().ref("user/"+user_Id).update({"business_name":business_name,"isbusiness":true})
+    
    
-    window.alert("註冊成功")
-    liff.closeWindow();
+    
 }
 
 function uuidv4() {
