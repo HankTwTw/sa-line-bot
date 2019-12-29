@@ -11,14 +11,11 @@
     <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-app.js"></script>
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/6.5.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-        https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script>
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
@@ -60,8 +57,7 @@
     
 </body>
 <script>
-window.onload = function() {
-    var firebaseConfig = {
+var firebaseConfig = {
         apiKey: "AIzaSyB_v9rhe7uhubTFT8_-rNlCagL_QzSRxS8",
         authDomain: "sasa-ec240.firebaseapp.com",
         databaseURL: "https://sasa-ec240.firebaseio.com",
@@ -70,9 +66,11 @@ window.onload = function() {
         messagingSenderId: "673434458765",
         appId: "1:673434458765:web:0090d396b25000aa10e0c4",
         measurementId: "G-HDTQ10VYRJ"
-      };
+};
       // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+window.onload = function() {
+    
     const useNodeJS = true;   // if you are not using a node server, set this value to false
     const defaultLiffId = "";   // change the default LIFF value if you are not using a node server
 
