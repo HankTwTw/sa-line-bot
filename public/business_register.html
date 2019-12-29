@@ -82,6 +82,18 @@ window.onload = function() {
     }
 };
 function initializeLiff(myLiffId) {
+    var firebaseConfig = {
+        apiKey: "AIzaSyB_v9rhe7uhubTFT8_-rNlCagL_QzSRxS8",
+        authDomain: "sasa-ec240.firebaseapp.com",
+        databaseURL: "https://sasa-ec240.firebaseio.com",
+        projectId: "sasa-ec240",
+        storageBucket: "sasa-ec240.appspot.com",
+        messagingSenderId: "673434458765",
+        appId: "1:673434458765:web:0090d396b25000aa10e0c4",
+        measurementId: "G-HDTQ10VYRJ"
+      };
+      // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
     liff
         .init({
             liffId: myLiffId
@@ -97,11 +109,30 @@ function initializeLiff(myLiffId) {
 /**
  * Initialize the app by calling functions handling individual app components
  */
-var have_money,scan_user_Id,name,user_Id;
+var have_money,scan_user_Id,name,user_Id,is_business;
 
 async function initializeApp() {
-
     
+    liff.getProfile().then(function(profile) {
+        name = profile.displayName
+        user_Id = profile.userId
+        firebase.database().ref("user/"+user_Id).once("value").then(function(snapshot) {
+            is_business = snapshot.hasChild("isbusiness")
+            if(is_business){
+                window.alert("您已經是商家")
+                liff.closeWindow();
+            }
+        });
+        
+    })
+}
+function submit(){
+    var business_name = document.getElementById("business_name").value
+    var goods_name = document.getElementById("goods_name").value
+    var goods_price = document.getElementById("goods_price").value
+    firebase.database().ref("user/"+user_Id).update({"business_name":business_name,"goods_name":goods_name,"goods_price":goods_price,"isbusiness":true})
+    window.alert("註冊成功")
+    liff.closeWindow();
 }
 
 
