@@ -130,19 +130,20 @@ async function initializeApp() {
         
     })
 }
-async function submit(){
+function submit(){
     var good_pic = document.getElementById("good_pic").files[0]
     var business_name = document.getElementById("business_name").value
     var goods_name = document.getElementById("goods_name").value
     var goods_price = document.getElementById("goods_price").value
-    var downloadURL
-    await firebase.storage().ref("imagess/"+uuidv4()).put(good_pic).then( function(snapshot) {
-        downloadURL=snapshot.downloadURL
+    console.log("submit")
+    firebase.storage().ref("imagess/"+uuidv4()).put(good_pic).then( function(snapshot) {
+        var downloadURL=snapshot.downloadURL
         console.log('Uploaded a blob or file!');
+        var value = firebase.database().ref("goods").push({"goods_name":goods_name,"goods_price":goods_price,"downloadURL":downloadURL})
+        firebase.database().ref("goods/"+value.key+"/"+user_Id).set(true)
     });
     firebase.database().ref("user/"+user_Id).update({"business_name":business_name,"isbusiness":true})
-    var value = firebase.database().ref("goods").push({"goods_name":goods_name,"goods_price":goods_price,"downloadURL":downloadURL})
-    firebase.database().ref("goods/"+value.key+"/"+user_Id).set(true)
+   
     window.alert("註冊成功")
     liff.closeWindow();
 }
