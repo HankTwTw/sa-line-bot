@@ -94,15 +94,14 @@ function initializeLiff(myLiffId) {
       };
       // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-    liff
-        .init({
+    liff.init({
             liffId: myLiffId
         })
         .then(() => {
             initializeApp();
         })
         .catch((err) => {
-        
+            window.alert(err)
         });
 }
 
