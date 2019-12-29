@@ -81,15 +81,17 @@ function scan(){
         const stringifiedResult = result.value;
         console.log(result.value)
         var value = stringifiedResult.split("&");
-        var user_Id = value[0];
-        var name = value[1];
+        // var user_Id = value[0];
+        // var name = value[1];
         console.log(value)
-        window.alert(user_Id+name)
+        console.log(value[0])
+        console.log(value[1])
+        
         
         document.getElementById("name_").innerHTML=name;
         document.getElementById("submit_btn").addEventListener("click",function(){
                  var dollar = document.getElementById("typing_dollar").value
-                 if(confirm("確實要給?"+name+dollar+"元嗎?")){
+                 if(confirm("確實要給?"+value[0]+value[1]+"元嗎?")){
                     // firebase.database().ref("user/"+value).once("value",function(snap){
                 
                     //     console.log(snap.val().name)
