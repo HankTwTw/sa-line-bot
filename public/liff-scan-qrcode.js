@@ -79,11 +79,11 @@ function scan(){
     liff.scanCode().then(result => {
         // e.g. result = { value: "Hello LIFF app!" }
         const stringifiedResult = result;
-        var value = result.value.split("&");
+        var value = result.value.spilt("&");
         var user_Id = value[0];
         var name = value[1];
-        window.alert(result.value)
-
+        window.alert(user_Id+name)
+        
         document.getElementById("name_").innerHTML=name;
         document.getElementById("submit_btn").addEventListener("click",function(){
                  var dollar = document.getElementById("typing_dollar").value
