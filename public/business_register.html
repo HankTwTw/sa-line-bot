@@ -35,11 +35,12 @@
     <form>
         <div class="form-group">
             <label for="exampleFormControlInput1">請輸入商家名稱</label>
-            <input type="file"class="form-control" id="good_pic" accept="image/gif, image/jpeg, image/png, image/jpg"/>
+            <input type="text" class="form-control" id="goods_name" placeholder="">
         </div>
         <div class="form-group">
                 <label for="exampleFormControlInput1">請上傳商品照片</label>
-                <input type="text" class="form-control" id="goods_name" placeholder="">
+                <input type="file"class="form-control" id="good_pic" accept="image/gif, image/jpeg, image/png, image/jpg"/>
+               
         </div>
         <div class="form-group">
             <label for="exampleFormControlInput1">請輸入商品名稱</label>
@@ -155,4 +156,10 @@ function uuidv4() {
 
 
 </script>
+ <script src="https://cdn.jsdelivr.net/npm/vconsole@3.2.0/dist/vconsole.min.js"></script>
+    <script>
+        // init vConsole
+        var vConsole = new VConsole();
+        console.log('Hello world');
+      </script>
 </html>
