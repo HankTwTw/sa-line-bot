@@ -82,6 +82,7 @@ function scan(){
         var value = result.value.spilt("&");
         var user_Id = value[0];
         var name = value[1];
+        console.log(value)
         window.alert(user_Id+name)
         
         document.getElementById("name_").innerHTML=name;
@@ -100,7 +101,7 @@ function scan(){
         
        
     }).catch(err => {
-       
+       console.log(err)
         
     });
 }
