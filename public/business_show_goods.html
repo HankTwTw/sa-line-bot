@@ -103,7 +103,7 @@
 			<th ><img src="<%=items[i].downloadURL%>" alt=""></th>
 			<th scope="row"><%=items[i].goods_name%></th>
 			<td><%=items[i].goods_price%></td>
-			<td><button type="button" id="delete_btn"  class="btn btn-danger" onclick="delete_btn(<%=items[i].key%>)" value="<%=items[i].key%>">刪除</button></td>
+			<td><button type="button" id="delete_btn"  class="btn btn-danger" onclick="delete_btn('<%=items[i].key%>')" value="<%=items[i].key%>">刪除</button></td>
 		</tr>
 		<%}%>
 	</script>
