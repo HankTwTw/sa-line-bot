@@ -97,11 +97,12 @@
 	<script id="tpl" type="text/html">
 
    
-		<%{%>
+		<%for(let i in items){%>
+			
 		<tr>
-			<th ><img src="https://i.imgur.com/oResbob.jpg" alt=""></th>
-			<th scope="row">1</th>
-			<td>Mark</td>
+			<th ><img src="<%=items[i].downloadURL%>" alt=""></th>
+			<th scope="row"><%=items[i].goods_price%></th>
+			<td><%=items[i].goods_name%></td>
 			<td><button type="button" class="btn btn-danger">刪除</button></td>
 		</tr>
 		   
