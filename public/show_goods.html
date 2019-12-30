@@ -19,6 +19,7 @@
 		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		<script src="./template.js"></script>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>商品管理</title>
 
@@ -57,7 +58,7 @@
 				<th scope="col">操作</th>
 			  </tr>
 			</thead>
-			<tbody>
+			<tbody id="sortable">
 					<tr>
 						<th ><img src="https://i.imgur.com/oResbob.jpg" alt=""></th>
 						<th scope="row">1</th>
@@ -68,8 +69,8 @@
 			</tbody>
 		</table>
 		<div class="center">
-				<button type="submit" id="submit" class="btn btn-primary" onclick="" data-toggle="modal" data-target="#myModal">新增商品</button>
-		  </div>
+			<button type="submit" id="submit" class="btn btn-primary" onclick="" data-toggle="modal" data-target="#myModal">新增商品</button>
+		</div>
 
 
 
@@ -85,12 +86,8 @@
 								<input type="number" class="form-control" id="business_name" placeholder="">
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default" 
-									data-dismiss="modal">關閉
-							</button>
-							<button type="button" class="btn btn-primary">
-								新增
-							</button>
+							<button type="button" class="btn btn-default"data-dismiss="modal">關閉</button>
+							<button type="button" onclick="add_goods()" class="btn btn-primary" data-dismiss="modal">新增</button>
 						</div>
 					</div>
 				</div>
@@ -100,15 +97,33 @@
 	<script id="tpl" type="text/html">
 
    
-		<% 
-		
+		<%{%>
+		<tr>
+			<th ><img src="https://i.imgur.com/oResbob.jpg" alt=""></th>
+			<th scope="row">1</th>
+			<td>Mark</td>
+			<td><button type="button" class="btn btn-danger">刪除</button></td>
+		</tr>
 		   
 		<%}%>
 	</script>
 
 
 	<script>
+			var firebaseConfig = {
+					apiKey: "AIzaSyB_v9rhe7uhubTFT8_-rNlCagL_QzSRxS8",
+					authDomain: "sasa-ec240.firebaseapp.com",
+					databaseURL: "https://sasa-ec240.firebaseio.com",
+					projectId: "sasa-ec240",
+					storageBucket: "sasa-ec240.appspot.com",
+					messagingSenderId: "673434458765",
+					appId: "1:673434458765:web:0090d396b25000aa10e0c4",
+					measurementId: "G-HDTQ10VYRJ"
+				  };
+				  
+			firebase.initializeApp(firebaseConfig);
 			window.onload = function() {
+				
 				
 				const useNodeJS = true;   // if you are not using a node server, set this value to false
 				const defaultLiffId = "";   // change the default LIFF value if you are not using a node server
@@ -136,38 +151,6 @@
 				}
 			};
 			function initializeLiff(myLiffId) {
-				var firebaseConfig = {
-					apiKey: "AIzaSyB_v9rhe7uhubTFT8_-rNlCagL_QzSRxS8",
-					authDomain: "sasa-ec240.firebaseapp.com",
-					databaseURL: "https://sasa-ec240.firebaseio.com",
-					projectId: "sasa-ec240",
-					storageBucket: "sasa-ec240.appspot.com",
-					messagingSenderId: "673434458765",
-					appId: "1:673434458765:web:0090d396b25000aa10e0c4",
-					measurementId: "G-HDTQ10VYRJ"
-				  };
-				  // Initialize Firebase
-				// firebase.initializeApp(firebaseConfig);
-				// firebase.database().ref("/competes/"+firebase_game_key_all).orderByChild("competeOrder/group").on('value', function(snapshot) {
-				// 	snapshot.foreach(function(snap){
-				// 		s
-				// 	})
-					// let data={items:datas}
-					// let html = template(document.getElementById('tpl').innerHTML,data);
-					// document.getElementById('sortable').innerHTML = html;
-					// datas=[]
-
-					// function set_data(name,key,group,check,pic){
-					// 	datas.push({'name':name,'key':group+'&'+key,'group':group,'name_key':name+"&"+key,'pic':pic})
-					// }
-					// async function database(key,group,check) {
-					// 		return firebase.database().ref('users/' + key).once('value').then(function (child) {
-					// 			return set_data(child.val().name,key,group,check,child.val().profileImageUrl)
-					// 		})
-					// 	}
-				// });
-
-
 				liff.init({
 						liffId: myLiffId
 					})
@@ -178,35 +161,43 @@
 						window.alert(err)
 					});
 			}
-			
-			/**
-			 * Initialize the app by calling functions handling individual app components
-			 */
-			var have_money,scan_user_Id,name,user_Id,is_business;
-			
+			var have_money,scan_user_Id,name,user_Id,is_business;		
 			async function initializeApp() {
-				// liff.getProfile().then(function(profile) {
-				// 	name = profile.displayName
-				// 	user_Id = profile.userId
-				// 	firebase.database().ref("user/"+user_Id).once("value").then(function(snapshot) {
-						
-				// 		is_business = snapshot.hasChild("isbusiness")
-				// 		if(is_business){
-				// 			window.alert("您已經是商家")
-				// 			liff.closeWindow();
-				// 		}
-				// 	});
-					
-				// })
+				liff.getProfile().then(function(profile) {
+					name = profile.displayName
+					user_Id = profile.userId
+					firebase.database().ref("goods").on('value', function(snapshot) {
+						let datas=[]
+						snapshot.foreach(function(snap){
+							if(snap.hasChild("user_Id")){
+								datas.push({'goods_name':snap.val().goods_name,"goods_price":snap.val().goods_price,"downloadURL":snap.val().downloadURL})
+							}
+							let data={items:datas}
+							let html = template(document.getElementById('tpl').innerHTML,data);
+							document.getElementById('sortable').innerHTML = html;
+							datas=[]
+						})
+					})
+				})
 			}
-			
-
-
-
-			
-
-			
-			
-			
+			function add_goods(){
+				var good_pic = document.getElementById("good_pic").files[0]
+				var goods_name = document.getElementById("goods_name").value
+				var goods_price = document.getElementById("goods_price").value
+				firebase.storage().ref("imagess/"+uuidv4()).put(good_pic).then( function(snapshot) {
+					return snapshot.ref.getDownloadURL();
+				}).then(function(downloadURL){
+					var value = firebase.database().ref("goods").push({"goods_name":goods_name,"goods_price":goods_price,"downloadURL":downloadURL})
+					firebase.database().ref("goods/"+value.key+"/"+user_Id).set(true)
+				}).then(function(){
+					window.alert("新增成功")
+				})
+			}
+			function uuidv4() {
+				return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+					var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+					return v.toString(16);
+				});
+			}
 			</script>
 </html>
