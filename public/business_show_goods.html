@@ -103,7 +103,7 @@
 			<th ><img src="<%=items[i].downloadURL%>" alt=""></th>
 			<th scope="row"><%=items[i].goods_name%></th>
 			<td><%=items[i].goods_price%></td>
-			<td><button type="button" id="delete_btn"  class="btn btn-danger" onclick="delete_btn('<%=items[i].key%>')" value="<%=items[i].key%>">刪除</button></td>
+			<td><button type="button"  class="btn btn-danger" onclick="delete_btn('<%=items[i].key%>')" >刪除</button></td>
 		</tr>
 		<%}%>
 	</script>
@@ -201,7 +201,10 @@
 				});
 			}
 			function delete_btn(a){
-				console.log(a)
+				if(confirm("確定要刪除此產品嗎??")){
+					firebase.database().ref("goods"+a).remove();
+				}
+				
 			}
 			</script>
 			 <script src="https://cdn.jsdelivr.net/npm/vconsole@3.2.0/dist/vconsole.min.js"></script>
