@@ -173,11 +173,12 @@
 							if(snap.hasChild(user_Id)){
 								datas.push({'goods_name':snap.val().goods_name,"goods_price":snap.val().goods_price,"downloadURL":snap.val().downloadURL})
 							}
-							let data={items:datas}
-							let html = template(document.getElementById('tpl').innerHTML,data);
-							document.getElementById('sortable').innerHTML = html;
-							datas=[]
+							
 						})
+						let data={items:datas}
+						let html = template(document.getElementById('tpl').innerHTML,data);
+						document.getElementById('sortable').innerHTML = html;
+						datas=[]
 					})
 				})
 			}
