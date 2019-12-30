@@ -137,8 +137,8 @@ function submit(){
     console.log("submit")
     firebase.database().ref("user/"+user_Id).update({"business_name":business_name,"isbusiness":true})
     firebase.storage().ref("imagess/"+uuidv4()).put(good_pic).then( function(snapshot) {
-        var downloadURL=snapshot.downloadURL
-        console.log('Uploaded a blob or file!'+snapshot);
+        console.log('Uploaded a blob or file!'+JSON.stringify(snapshot));
+        var downloadURL=snapshot.ref.getDownloadURL()
         console.log('Uploaded a blob or file!'+downloadURL);
         var value = firebase.database().ref("goods").push({"goods_name":goods_name,"goods_price":goods_price,"downloadURL":downloadURL})
         firebase.database().ref("goods/"+value.key+"/"+user_Id).set(true)
