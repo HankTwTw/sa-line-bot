@@ -59,12 +59,12 @@
 			  </tr>
 			</thead>
 			<tbody id="sortable">
-					<tr>
+					<!-- <tr>
 						<th ><img src="https://i.imgur.com/oResbob.jpg" alt=""></th>
 						<th scope="row">1</th>
 						<td>Mark</td>
 						<td><button type="button" class="btn btn-danger">刪除</button></td>
-					</tr>
+					</tr> -->
 
 			</tbody>
 		</table>
@@ -103,9 +103,8 @@
 			<th ><img src="<%=items[i].downloadURL%>" alt=""></th>
 			<th scope="row"><%=items[i].goods_name%></th>
 			<td><%=items[i].goods_price%></td>
-			<td><button type="button" class="btn btn-danger">刪除</button></td>
+			<td><button type="button" id="delete_btn"  class="btn btn-danger" onclick="delete_btn(<%=items[i].key%>)" value="<%=items[i].key%>">刪除</button></td>
 		</tr>
-		   
 		<%}%>
 	</script>
 
@@ -171,7 +170,7 @@
 						let datas=[]
 						snapshot.forEach(function(snap){
 							if(snap.hasChild(user_Id)){
-								datas.push({'goods_name':snap.val().goods_name,"goods_price":snap.val().goods_price,"downloadURL":snap.val().downloadURL})
+								datas.push({'goods_name':snap.val().goods_name,"goods_price":snap.val().goods_price,"downloadURL":snap.val().downloadURL,"key":snap.key})
 							}
 							
 						})
@@ -200,6 +199,9 @@
 					var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
 					return v.toString(16);
 				});
+			}
+			function delete_btn(a){
+				console.log(a)
 			}
 			</script>
 			 <script src="https://cdn.jsdelivr.net/npm/vconsole@3.2.0/dist/vconsole.min.js"></script>
