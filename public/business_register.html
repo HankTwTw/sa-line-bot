@@ -29,8 +29,12 @@
         #submit{
             width: 100%;
         }
+        .hidden{
+            display: none;
+        }
     </style>
-    <form>
+    <div class="loader hidden"></div>
+    <form id = "form">
         <div class="form-group">
             <label for="exampleFormControlInput1">請輸入商家名稱</label>
             <input type="text" class="form-control" id="business_name" placeholder="">
@@ -135,6 +139,8 @@ function submit(){
     var goods_name = document.getElementById("goods_name").value
     var goods_price = document.getElementById("goods_price").value
     console.log("submit")
+    document.getElementById("form").classList.add('hidden');
+	document.getElementById("loader").classList.remove('hidden');
     firebase.database().ref("user/"+user_Id).update({"business_name":business_name,"isbusiness":true})
     firebase.storage().ref("imagess/"+uuidv4()).put(good_pic).then( function(snapshot) {
         return snapshot.ref.getDownloadURL();
@@ -143,7 +149,7 @@ function submit(){
         firebase.database().ref("goods/"+value.key+"/"+user_Id).set(true)
     }).then(function(){
         window.alert("註冊成功")
-        // liff.closeWindow();   
+        liff.closeWindow();   
     })
 }
 
