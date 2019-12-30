@@ -169,7 +169,7 @@
 					user_Id = profile.userId
 					firebase.database().ref("goods").on('value', function(snapshot) {
 						let datas=[]
-						snapshot.foreach(function(snap){
+						snapshot.forEach(function(snap){
 							if(snap.hasChild(user_Id)){
 								datas.push({'goods_name':snap.val().goods_name,"goods_price":snap.val().goods_price,"downloadURL":snap.val().downloadURL})
 							}
