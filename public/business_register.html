@@ -137,13 +137,15 @@ function submit(){
     console.log("submit")
     firebase.database().ref("user/"+user_Id).update({"business_name":business_name,"isbusiness":true})
     firebase.storage().ref("imagess/"+uuidv4()).put(good_pic).then( function(snapshot) {
-        var downloadURL=firebase.storage().ref("imagess/"+uuidv4()).getDownloadURL()
-        var value = firebase.database().ref("goods").push({"goods_name":goods_name,"goods_price":goods_price,"downloadURL":downloadURL})
-        firebase.database().ref("goods/"+value.key+"/"+user_Id).set(true)
-        
-    }).then(function(){
+        firebase.storage().ref("imagess/"+uuidv4()).getDownloadURL().then(url => {
+            var value = firebase.database().ref("goods").push({"goods_name":goods_name,"goods_price":goods_price,"downloadURL":downloadURL})
+            firebase.database().ref("goods/"+value.key+"/"+user_Id).set(true)
+        }).then(function(){
         window.alert("註冊成功")
-        // liff.closeWindow();
+        // liff.closeWindow();  
+       
+        
+        })
     });
     
    
