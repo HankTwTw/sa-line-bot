@@ -202,7 +202,7 @@
 			}
 			function delete_btn(a){
 				if(confirm("確定要刪除此產品嗎??")){
-					firebase.database().ref("goods"+a).remove();
+					firebase.database().ref("goods/"+a).remove();
 				}
 				
 			}
