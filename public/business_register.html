@@ -33,7 +33,7 @@
             display: none;
         }
     </style>
-    <div class="loader hidden"></div>
+    <div class="loader hidden"id="loader"></div>
     <form id = "form">
         <div class="form-group">
             <label for="exampleFormControlInput1">請輸入商家名稱</label>
@@ -53,8 +53,9 @@
             <input type="number" class="form-control" id="goods_price" placeholder="">
         </div>
        
+       
       </form>
-      <div class="center">
+      <div class="center"id="btn">
             <button type="submit" id="submit" class="btn btn-primary" onclick="submit()">提交</button>
       </div>
      
@@ -140,6 +141,7 @@ function submit(){
     var goods_price = document.getElementById("goods_price").value
     console.log("submit")
     document.getElementById("form").classList.add('hidden');
+    document.getElementById("btn").classList.add('hidden');
 	document.getElementById("loader").classList.remove('hidden');
     firebase.database().ref("user/"+user_Id).update({"business_name":business_name,"isbusiness":true})
     firebase.storage().ref("imagess/"+uuidv4()).put(good_pic).then( function(snapshot) {
