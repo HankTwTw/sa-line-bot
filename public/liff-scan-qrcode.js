@@ -97,6 +97,7 @@ function scan(){
     liff.scanCode().then(result => {
         // e.g. result = { value: "Hello LIFF app!" }
         const stringifiedResult = result.value;
+        console.log(result)
         console.log(result.value)
         var value = stringifiedResult.split("&");
         scan_user_Id = value[0];

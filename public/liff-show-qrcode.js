@@ -55,7 +55,6 @@ function initializeApp() {
     // });
 
     liff.getProfile().then(function(profile) {
-        console.log(profile.displayName);
         new QRCode(document.getElementById("qrcode"),  {
             text: profile.userId+"&"+profile.displayName,
             width: 256,
