@@ -1,5 +1,6 @@
 
 window.onload = function() {
+    
     const useNodeJS = true;   // if you are not using a node server, set this value to false
     const defaultLiffId = "";   // change the default LIFF value if you are not using a node server
 
@@ -53,12 +54,12 @@ function initializeApp() {
     // }).catch(err => {
     //     // liff.closeWindow();
     // });
-
+    
     liff.getProfile().then(function(profile) {
         var name = profile.displayName
         console.log(profile.userId+"&"+profile.displayName.toString())
         new QRCode(document.getElementById("qrcode"),  {
-            text: profile.userId+"&"+profile.displayName.toString(),
+            text: profile.userId,
             width: 256,
             height: 256,
             colorDark : '#000000',

@@ -97,12 +97,13 @@ function scan(){
     liff.scanCode().then(result => {
         // e.g. result = { value: "Hello LIFF app!" }
         const stringifiedResult = result.value;
-        console.log(result)
-        console.log(result.value)
-        var value = stringifiedResult.split("&");
-        scan_user_Id = value[0];
-        name = value[1];
-        document.getElementById("button_scan").innerHTML="送給"+name;
+
+        scan_user_Id = stringifiedResult;
+        firebase.database().ref("user/"+scan_user_Id).once("value",function(snap){
+            name = snap.val().name;
+            document.getElementById("button_scan").innerHTML="送給"+name;
+        })
+        
     }).catch(err => {
        console.log(err)
         
