@@ -56,6 +56,7 @@ function initializeApp() {
 
     liff.getProfile().then(function(profile) {
         var name = profile.displayName
+        console.log(profile.userId+"&"+profile.displayName.toString())
         new QRCode(document.getElementById("qrcode"),  {
             text: profile.userId+"&"+profile.displayName.toString(),
             width: 256,
