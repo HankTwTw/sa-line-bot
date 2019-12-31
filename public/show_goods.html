@@ -38,8 +38,8 @@
             width: 100%;
 		}
 		img{
-			width:120px;
-			height: 120px;
+			width:150px;
+			height: 150px;
 		}
 		.custom-table-width{
 			width: 170px;
@@ -59,30 +59,55 @@
 			  </tr>
 			</thead>
 			<tbody id="sortable">
-					<!-- <tr>
+					<tr>
 						<th ><img src="https://i.imgur.com/oResbob.jpg" alt=""></th>
 						<th scope="row">1</th>
 						<td>Mark</td>
 						<td><button type="button" class="btn btn-danger">刪除</button></td>
-					</tr> -->
+					</tr>
 
 			</tbody>
 		</table>
-		
+		<div class="center">
+			<button type="submit" id="submit" class="btn btn-primary" onclick="" data-toggle="modal" data-target="#myModal">新增商品</button>
+		</div>
 
+
+
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-body">
+								<label for="exampleFormControlInput1">商品照片</label>
+								<input type="file"class="form-control" id="good_pic" accept="image/gif, image/jpeg, image/png, image/jpg"/>
+								<label for="exampleFormControlInput1">商品名稱</label>
+								<input type="text" class="form-control" id="business_name" placeholder="">
+								<label for="exampleFormControlInput1">商品價格</label>
+								<input type="number" class="form-control" id="business_name" placeholder="">
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"data-dismiss="modal">關閉</button>
+							<button type="button" onclick="add_goods()" class="btn btn-primary" data-dismiss="modal">新增</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		
 	</body>
 	<script id="tpl" type="text/html">
 
    
-		<%for(let i in items){%>
+		<%{%>
+			for(var i in items){
+				
 			
 		<tr>
-			<th ><img src="<%=items[i].downloadURL%>" alt=""></th>
-			<th scope="row"><%=items[i].goods_name%></th>
-			<td><%=items[i].goods_price%></td>
-			<td><button type="button"  class="btn btn-success" onclick="buy_btn('<%=items[i].key%>','<%=items[i].goods_name%>',<%=items[i].goods_price%>,'<%=items[i].user_Id%>')" >購買</button></td>
+			<th ><img src="https://i.imgur.com/oResbob.jpg" alt=""></th>
+			<th scope="row">1</th>
+			<td>Mark</td>
+			<td><button type="button" class="btn btn-danger">刪除</button></td>
 		</tr>
+		   
 		<%}%>
 	</script>
 
@@ -117,7 +142,7 @@
 							return reqResponse.json();
 						})
 						.then(function(jsonResponse) {
-							myLiffId = jsonResponse.buy_goods;
+							myLiffId = jsonResponse.business_register;
 							initializeLiff(myLiffId);
 						})
 						.catch(function(error) {
@@ -139,23 +164,22 @@
 						window.alert(err)
 					});
 			}
-			var have_money,scan_user_Id,user_name,user_Id,is_business;		
+			var have_money,scan_user_Id,name,user_Id,is_business,;		
 			async function initializeApp() {
 				liff.getProfile().then(function(profile) {
-					user_name = profile.displayName
-                    user_Id = profile.userId
-                    firebase.database().ref("user/"+profile.userId).once("value",function(snap){
-                            have_money=snap.val().cash;     
-                    })
+					name = profile.displayName
+					user_Id = profile.userId
 					firebase.database().ref("goods").on('value', function(snapshot) {
 						let datas=[]
-						snapshot.forEach(function(snap){
-							datas.push({'goods_name':snap.val().goods_name,"goods_price":snap.val().goods_price,"downloadURL":snap.val().downloadURL,"key":snap.key,"user_Id":snap.val().user_Id})
+						snapshot.foreach(function(snap){
+							if(snap.hasChild("user_Id")){
+								datas.push({'goods_name':snap.val().goods_name,"goods_price":snap.val().goods_price,"downloadURL":snap.val().downloadURL})
+							}
+							let data={items:datas}
+							let html = template(document.getElementById('tpl').innerHTML,data);
+							document.getElementById('sortable').innerHTML = html;
+							datas=[]
 						})
-						let data={items:datas}
-						let html = template(document.getElementById('tpl').innerHTML,data);
-						document.getElementById('sortable').innerHTML = html;
-						datas=[]
 					})
 				})
 			}
@@ -178,29 +202,5 @@
 					return v.toString(16);
 				});
 			}
-			function buy_btn(key,goods_name,goods_price,get_user_Id){
-                if(goods_price>have_money){window.alert("您的錢只有"+have_money+"哦，請先參加活動賺取樂幣")}
-                else if(confirm("確定要購買產品嗎??")){
-                    {
-                        firebase.database().ref("user/"+get_user_Id).once("value",function(snap){
-                            firebase.database().ref("user/"+get_user_Id+"/cash").set(snap.val().cash+goods_price)
-                            firebase.database().ref("user/"+user_Id+"/cash").set(have_money-goods_price)
-                            var key = firebase.database().ref("record").push({tran_amount:goods_price,type:"buy_goods",pay_name:user_name,get_name:snap.val().name})
-                            firebase.database().ref("record/"+key+"/"+user_Id).set("pay")
-                            firebase.database().ref("record/"+key+"/"+get_user_Id).set("get")
-                            window.alert("發送成功")
-                            liff.closeWindow();
-                        })
-                    }
-					// window.alert(key+goods_name+goods_price+user_Id)
-				}
-				
-			}
 			</script>
-			 <script src="https://cdn.jsdelivr.net/npm/vconsole@3.2.0/dist/vconsole.min.js"></script>
-			 <script>
-				 // init vConsole
-				 var vConsole = new VConsole();
-				 console.log('Hello world');
-			   </script>
 </html>
