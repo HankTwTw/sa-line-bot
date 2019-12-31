@@ -43,7 +43,7 @@ var firebaseConfig = {
 app.use(express.static('public'));
 
 app.get('/send-id', function(req, res) {
-    res.json({show_id: process.env.myLiffId_show,scan_id: process.env.myLiffId_scan,business_register:process.env.business_register,business_show_goods:process.env.business_show_goods,buy_goods:process.env.buy_goods});
+    res.json({show_id: process.env.myLiffId_show,scan_id: process.env.myLiffId_scan,business_register:process.env.business_register,business_show_goods:process.env.business_show_goods,buy_goods:process.env.buy_goods,show_record:process.env.show_record});
 });
   
 
