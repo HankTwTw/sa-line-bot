@@ -58,7 +58,7 @@ function initializeApp() {
         var name = toString(profile.displayName)
         
         new QRCode(document.getElementById("qrcode"),  {
-            text: profile.userId+"&"+"吳俊逸sad123"+name,
+            text: "u12"+"&"+"吳俊逸sad123"+name,
             width: 256,
             height: 256,
             colorDark : '#000000',
