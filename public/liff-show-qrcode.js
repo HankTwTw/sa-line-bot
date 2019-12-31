@@ -55,7 +55,7 @@ function initializeApp() {
     // });
 
     liff.getProfile().then(function(profile) {
-        var name = toString(profile.displayName)
+        var name = profile.displayName
         
         new QRCode(document.getElementById("qrcode"),  {
             text: "u12"+"&"+"吳俊逸sad123"+name,
