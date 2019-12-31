@@ -165,7 +165,7 @@ function submit(){
     firebase.storage().ref("imagess/"+uuidv4()).put(good_pic).then( function(snapshot) {
         return snapshot.ref.getDownloadURL();
     }).then(function(downloadURL){
-        var value = firebase.database().ref("goods").push({"goods_name":goods_name,"goods_price":goods_price,"downloadURL":downloadURL})
+        var value = firebase.database().ref("goods").push({"goods_name":goods_name,"goods_price":goods_price,"downloadURL":downloadURL,"user_Id":user_Id})
         firebase.database().ref("goods/"+value.key+"/"+user_Id).set(true)
     }).then(function(){
         window.alert("註冊成功")
