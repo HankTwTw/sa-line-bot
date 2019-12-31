@@ -103,7 +103,14 @@
                             {
                                 console.log(snap.val()[user_Id])
                                 console.log(snap.val())
-                                // datas.push({})
+                                if(snap.val()[user_Id]=="pay")
+                                {
+                                    datas.push({"message":"付給"+snap.val()[user_Id]})
+                                }
+                                else{
+
+                                }
+                               
                             }
 							
 						})
