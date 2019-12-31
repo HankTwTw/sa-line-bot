@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html class="iframe-h">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+		<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+		<!-- Add Firebase products that you want to use -->
+		<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script>
+		<!-- TODO: Add SDKs for Firebase products that you want to use
+			https://firebase.google.com/docs/web/setup#available-libraries -->
+		<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+		<link rel="stylesheet" href="./bootstrap.min.css">
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		<script src="./template.js"></script>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>商品管理</title>
+
+	</head>
+
+	<body>
+		<ul class="list-group">
+            <li class="list-group-item">Cras justo odio</li>
+        </ul>
+	</body>
+	<script id="tpl" type="text/html">
+
+   
+		<%for(let i in items){%>
+			<li class="list-group-item">Cras justo odio</li>
+		<%}%>
+	</script>
+
+
+	<script>
+			var firebaseConfig = {
+					apiKey: "AIzaSyB_v9rhe7uhubTFT8_-rNlCagL_QzSRxS8",
+					authDomain: "sasa-ec240.firebaseapp.com",
+					databaseURL: "https://sasa-ec240.firebaseio.com",
+					projectId: "sasa-ec240",
+					storageBucket: "sasa-ec240.appspot.com",
+					messagingSenderId: "673434458765",
+					appId: "1:673434458765:web:0090d396b25000aa10e0c4",
+					measurementId: "G-HDTQ10VYRJ"
+				  };
+				  
+			firebase.initializeApp(firebaseConfig);
+			window.onload = function() {
+				
+				
+				const useNodeJS = true;   // if you are not using a node server, set this value to false
+				const defaultLiffId = "";   // change the default LIFF value if you are not using a node server
+			
+				// DO NOT CHANGE THIS
+				let myLiffId = "";
+			
+				// if node is used, fetch the environment variable and pass it to the LIFF method
+				// otherwise, pass defaultLiffId
+				if (useNodeJS) {
+					fetch('/send-id')
+						.then(function(reqResponse) {
+							return reqResponse.json();
+						})
+						.then(function(jsonResponse) {
+							myLiffId = jsonResponse.buy_goods;
+							initializeLiff(myLiffId);
+						})
+						.catch(function(error) {
+							
+						});
+				} else {
+					myLiffId = defaultLiffId;
+					initializeLiff(myLiffId);
+				}
+			};
+			function initializeLiff(myLiffId) {
+				liff.init({
+						liffId: myLiffId
+					})
+					.then(() => {
+						initializeApp();
+					})
+					.catch((err) => {
+						window.alert(err)
+					});
+			}
+			var have_money,scan_user_Id,name,user_Id,is_business;		
+			async function initializeApp() {
+				liff.getProfile().then(function(profile) {
+					name = profile.displayName
+					user_Id = profile.userId
+					firebase.database().ref("record").on('value', function(snapshot) {
+						let datas=[]
+						snapshot.forEach(function(snap){
+                            if(snap.hasChild(user_Id))
+                            {
+                                console.log(snap.val())
+                                // datas.push({})
+                            }
+							
+						})
+						let data={items:datas}
+						let html = template(document.getElementById('tpl').innerHTML,data);
+						document.getElementById('list-group').innerHTML = html;
+						datas=[]
+					})
+				})
+			}
+
+
+			</script>
+			 <script src="https://cdn.jsdelivr.net/npm/vconsole@3.2.0/dist/vconsole.min.js"></script>
+			 <script>
+				 // init vConsole
+				 var vConsole = new VConsole();
+				 console.log('Hello world');
+			   </script>
+</html>
