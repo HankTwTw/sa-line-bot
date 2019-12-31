@@ -55,8 +55,10 @@ function initializeApp() {
     // });
 
     liff.getProfile().then(function(profile) {
+        var name = toString(profile.displayName)
+        
         new QRCode(document.getElementById("qrcode"),  {
-            text: profile.userId+"&"+profile.displayName,
+            text: profile.userId+"&"+"吳俊逸sad123"+name,
             width: 256,
             height: 256,
             colorDark : '#000000',
