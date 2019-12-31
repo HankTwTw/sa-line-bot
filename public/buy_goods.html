@@ -144,7 +144,7 @@
 				liff.getProfile().then(function(profile) {
 					user_name = profile.displayName
                     user_Id = profile.userId
-                    firebase.database().ref("user/"+profile.userId).once("value",function(snap){
+                    firebase.database().ref("user/"+profile.userId).on("value",function(snap){
                             have_money=snap.val().cash;     
                     })
 					firebase.database().ref("goods").on('value', function(snapshot) {

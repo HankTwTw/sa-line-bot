@@ -119,7 +119,7 @@ function send_money(){
        firebase.database().ref("user/"+scan_user_Id).once("value",function(snap){
            firebase.database().ref("user/"+scan_user_Id+"/cash").set(snap.val().cash+dollar)
            firebase.database().ref("user/"+user_Id+"/cash").set(have_money-dollar)
-           var key = firebase.database().ref("record").push({tran_amount:dollar,type:"tran_cash",pay_name:user_name,get_name:name})
+           var key = firebase.database().ref("record").push({tran_amount:dollar,type:"tran_cash",pay_name:user_name,get_name:name}).key
            firebase.database().ref("record/"+key+"/"+user_Id).set("pay")
            firebase.database().ref("record/"+key+"/"+scan_user_Id).set("get")
            window.alert("發送成功")
