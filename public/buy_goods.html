@@ -117,7 +117,7 @@
 							return reqResponse.json();
 						})
 						.then(function(jsonResponse) {
-							myLiffId = jsonResponse.business_show_goods;
+							myLiffId = jsonResponse.buy_goods;
 							initializeLiff(myLiffId);
 						})
 						.catch(function(error) {
