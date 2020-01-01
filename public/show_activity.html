@@ -21,7 +21,8 @@
     <style>
         body{
             margin: 0 auto;
-            font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;  
+            font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
+            
         }
         .card{
             margin: 0 auto;
@@ -38,9 +39,6 @@
         }
         .all_card{
             padding: 15px 0 15px 0 ;
-        }
-        .collapse{
-            font-size: 15px;
         }
         #fixedbutton1{
             margin: 0 auto;
@@ -94,7 +92,7 @@
                             <label for="exampleFormControlInput1">活動地點</label>
                             <input type="text" class="form-control" id="activity_place" placeholder="">
                             <label for="exampleFormControlInput1">活動人數</label>
-                            <input type="text" class="form-control" id="activity_limit" placeholder="">
+                            <input type="number" class="form-control" id="activity_limit" placeholder="">
                             <label for="exampleFormControlInput1">活動簡介</label>
                             <input type="text" class="form-control" id="activity_intro" placeholder="">
                     </div>
@@ -134,7 +132,15 @@
               
 		<%}%>
 	</script>
-
+    <script>
+    $('input[type="text"],textarea').on('click', function () {
+    var target = this;
+    setTimeout(function(){
+            target.scrollIntoViewIfNeeded();
+            console.log('scrollIntoViewIfNeeded');
+        },400);
+    });
+    </script>
 
 	<script>
 			var firebaseConfig = {
