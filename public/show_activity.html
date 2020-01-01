@@ -46,8 +46,17 @@
             padding-top: 15px;
         }
         .modal-body{
-            height: 560px;
+            height: 660px;
         }
+        #add_btn{
+            width: 80%;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .add_btn_right{
+            float: right;
+        }
+
 
       
     </style>
@@ -98,10 +107,10 @@
                             <input type="number" class="form-control" id="activity_limit" placeholder="">
                             <label for="exampleFormControlInput1">活動簡介</label>
                             <input type="text" class="form-control" id="activity_intro" placeholder="">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default"data-dismiss="modal">關閉</button>
-                        <button type="button" onclick="add_activity()" class="btn btn-primary" data-dismiss="modal">新增</button>
+                            <div id="add_btn">
+                                <button type="button" class="btn btn-default btn-primary add_btn_"data-dismiss="modal">關閉</button>
+                                <button type="button" onclick="add_activity()" class="btn btn-primary add_btn_right" data-dismiss="modal">新增</button>
+                            </div>
                     </div>
                 </div>
             </div>
