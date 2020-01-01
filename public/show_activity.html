@@ -221,7 +221,7 @@
 					name = profile.displayName
                     user_Id = profile.userId
                     firebase.database().ref("user/"+user_Id).on('value', function(snapshot) {
-                        if(snapshot.hasChild(isbusiness))
+                        if(snapshot.hasChild('isbusiness'))
                         {
                             document.getElementById("fixedbutton1").classList.remove('hidden');
                         }
