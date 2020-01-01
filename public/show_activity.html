@@ -230,9 +230,10 @@
 					await firebase.database().ref("activity").on('value', function(snapshot) {
 						let datas=[]
 						snapshot.forEach(function(snap){
-                            if(snap.val().attend!=undefined)
+                            if(snap.val().attend_people!=undefined)
                             {
                                 console.log(snap.val().attend)
+                                console.log(snap.val().attend[user_Id])
                             }
                             datas.push({activity_key:snap.key,activity_pic:snap.val().activity_pic,activity_title:snap.val().activity_title,activity_place:snap.val().activity_place,activity_limit:snap.val().activity_limit,activity_time:snap.val().activity_time,activity_intro:snap.val().activity_intro})		
 						})
