@@ -203,20 +203,20 @@
 			}
             function add_activity(){
                 let activity_pic = document.getElementById("activity_pic").files[0]
-                let activity_title = document.getElementById("activity_title").val()
-                let activity_place = document.getElementById("activity_place").val()
-                let activity_limit = document.getElementById("activity_limit").val()
-                let activity_time = document.getElementById("activity_time").val()
-                let activity_intro = document.getElementById("activity_intro").val()
+                let activity_title = document.getElementById("activity_title").value
+                let activity_place = document.getElementById("activity_place").value
+                let activity_limit = document.getElementById("activity_limit").value
+                let activity_time = document.getElementById("activity_time").value
+                let activity_intro = document.getElementById("activity_intro").value
                 firebase.storage().ref("imagess/"+uuidv4()).put(activity_pic).then( function(snapshot) {
 					return snapshot.ref.getDownloadURL();
 				}).then(function(downloadURL){
-					var value = firebase.database().ref("goods").push({"activity_pic":downloadURL,"activity_title":activity_title,"activity_place":activity_place,"activity_limit":activity_limit,"activity_time":activity_time,"activity_intro":activity_intro,"user_Id":user_Id})
-					firebase.database().ref("goods/"+value.key+"/"+user_Id).set(true)
+					var value = firebase.database().ref("activity").push({"activity_pic":downloadURL,"activity_title":activity_title,"activity_place":activity_place,"activity_limit":activity_limit,"activity_time":activity_time,"activity_intro":activity_intro,"user_Id":user_Id})
+					firebase.database().ref("activity/"+value.key+"/"+user_Id).set(true)
 				}).then(function(){
 					window.alert("新增成功")
 				})
-                // var activity_key = firebase.database().ref("activity").push({}).key
+              
             }
 
 			</script>
