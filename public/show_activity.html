@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html class="iframe-h">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script>
+		<link rel="stylesheet" href="./bootstrap.min.css">
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="./template.js"></script>
+
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>活動紀錄</title>
+
+
+
+        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>  
+
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> 
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script src="https://cdn.bootcss.com/moment.js/2.18.1/moment-with-locales.min.js"></script>  
+<link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>  
+
+	</head>
+    <style>
+        body{
+            margin: 0 auto;
+            font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;  
+        }
+        .card{
+            margin: 0 auto;
+        }
+        .card-link-right{
+            float: right;
+        }
+        .card-body_btn{
+           width: 90%;
+           margin: 0 auto;
+        }
+        .card-t{
+            font-size: 25px;
+        }
+        .all_card{
+            padding: 15px 0 15px 0 ;
+        }
+        .collapse{
+            font-size: 20px;
+        }
+        #fixedbutton1{
+            margin: 0 auto;
+            width: 100px;
+            padding-top: 15px;
+        }
+
+      
+    </style>
+	<body>
+        <label for="">選擇日期：</label> 
+
+        <div class="input-group date" id='date1'>  
+
+              <input type="text" class="form-control" />  
+
+              <span class="input-group-addon">  
+                  <i class="glyphicon glyphicon-calendar"></i>  
+              </span>  
+          </div>  
+
+<script>
+
+$('#date1').datetimepicker({  
+
+  format: 'YYYY-MM-DD hh:mm:ss',  
+  locale: moment.locale('zh-cn')  
+});
+</script>
+        <div id = "fixedbutton1">
+                 <button class="btn btn-info" id=fixedbutton data-toggle="modal" data-target="#myModal">新增活動</button>
+
+        </div>
+       
+
+        <div class="all_card">
+          <div class="card" style="width: 18rem;">
+            <img src="https://firebasestorage.googleapis.com/v0/b/golf-67815.appspot.com/o/%E7%90%83%E5%A0%B4%E7%85%A7%E7%89%87%2F%E5%86%8D%E8%88%882000x1500.jpg?alt=media&token=877e8ac8-a184-4127-8f56-e87904020c8a" class="card-img-top" alt="...">
+            <div class="card-body card-t">
+              <h2 class="card-title">風景遊玩</h2>
+              <p class="card-text">假日找個時間一起出遊</p>
+            </div>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item">地點:桃園市平鎮區廣泰路210項25弄1號2樓</li>
+                    <li class="list-group-item">時間:12312312412</li>
+                    <li class="list-group-item">人數:0/50</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-body card-body_btn">
+              <a href="#collapseExample" class="btn btn-primary card-link" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">詳細資訊</a>
+              <a href="#collapseExample" class="btn btn-primary card-link-right" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">參加活動</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                            <label for="exampleFormControlInput1">活動預覽照片</label>
+                            <input type="file"class="form-control" id="good_pic" accept="image/gif, image/jpeg, image/png, image/jpg"/>
+                            <label for="exampleFormControlInput1">活動標題</label>
+                            <input type="text" class="form-control" id="goods_name" placeholder="">
+                            <label for="exampleFormControlInput1">活動時間</label>
+                            <input type="text" class="form-control" id="goods_name" placeholder="">
+                            <label for="exampleFormControlInput1">活動地點</label>
+                            <input type="text" class="form-control" id="goods_name" placeholder="">
+                            <label for="exampleFormControlInput1">活動人數</label>
+                            <input type="text" class="form-control" id="goods_name" placeholder="">
+                            <label for="exampleFormControlInput1">活動簡介</label>
+                            <input type="text" class="form-control" id="goods_name" placeholder="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default"data-dismiss="modal">關閉</button>
+                        <button type="button" onclick="add_goods()" class="btn btn-primary" data-dismiss="modal">新增</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+	</body>
+	<script id="tpl" type="text/html">
+
+   
+		<%for(let i in items){%>
+		
+		<%}%>
+	</script>
+
+
+	<script>
+			var firebaseConfig = {
+					apiKey: "AIzaSyB_v9rhe7uhubTFT8_-rNlCagL_QzSRxS8",
+					authDomain: "sasa-ec240.firebaseapp.com",
+					databaseURL: "https://sasa-ec240.firebaseio.com",
+					projectId: "sasa-ec240",
+					storageBucket: "sasa-ec240.appspot.com",
+					messagingSenderId: "673434458765",
+					appId: "1:673434458765:web:0090d396b25000aa10e0c4",
+					measurementId: "G-HDTQ10VYRJ"
+				  };
+				  
+			firebase.initializeApp(firebaseConfig);
+			window.onload = function() {
+				const useNodeJS = true; 
+				const defaultLiffId = "";   
+				let myLiffId = "";
+				if (useNodeJS) {
+					fetch('/send-id')
+						.then(function(reqResponse) {
+							return reqResponse.json();
+						})
+						.then(function(jsonResponse) {
+							myLiffId = jsonResponse.show_activity;
+							initializeLiff(myLiffId);
+						})
+						.catch(function(error) {
+							
+						});
+				} else {
+					myLiffId = defaultLiffId;
+					initializeLiff(myLiffId);
+				}
+			};
+			function initializeLiff(myLiffId) {
+				liff.init({
+						liffId: myLiffId
+					})
+					.then(() => {
+						initializeApp();
+					})
+					.catch((err) => {
+						window.alert(err)
+					});
+			}
+			var have_money,name,user_Id,is_business;		
+			async function initializeApp() {
+				liff.getProfile().then(function(profile) {
+					name = profile.displayName
+					user_Id = profile.userId
+					// firebase.database().ref("record").on('value', function(snapshot) {
+					// 	let datas=[]
+					// 	snapshot.forEach(function(snap){
+                    //         if(snap.hasChild(user_Id))
+                    //         {
+                    //             console.log(snap.val()[user_Id])
+                    //             console.log(snap.val())
+                    //             if(snap.val().type=="buy_goods")
+                    //             {
+                    //                 if(snap.val()[user_Id]=="pay")
+                    //                 {
+                    //                     datas.push({"message":"購買商品付給"+snap.val().get_name+snap.val().tran_amount+"元"})
+                    //                 }
+                    //                 else{
+                    //                     datas.push({"message":"販賣商品從"+snap.val().pay_name+"收到"+snap.val().tran_amount+"元"})
+                    //                 }
+                    //             }
+                    //             else{
+                    //                 if(snap.val()[user_Id]=="pay")
+                    //                 {
+                    //                     datas.push({"message":"送給"+snap.val().get_name+"紅包"+snap.val().tran_amount+"元"})
+                    //                 }
+                    //                 else{
+                    //                     datas.push({"message":snap.val().pay_name+"送了紅包"+snap.val().tran_amount+"元給您"})
+                    //                 }
+                    //             }
+                               
+                    //         }
+							
+					// 	})
+					// 	let data={items:datas}
+					// 	let html = template(document.getElementById('tpl').innerHTML,data);
+					// 	document.getElementById('list-group').innerHTML = html;
+					// 	datas=[]
+					// })
+				})
+			}
+            function add_activity(){
+                var activity_key = firebase.database().ref("activity").push({}).key
+            }
+
+			</script>
+			 <script src="https://cdn.jsdelivr.net/npm/vconsole@3.2.0/dist/vconsole.min.js"></script>
+			 <!-- <script>
+				 // init vConsole
+				 var vConsole = new VConsole();
+				 console.log('Hello world');
+			</script> -->
+</html>

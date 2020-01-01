@@ -159,19 +159,6 @@
 					})
 				})
 			}
-			function add_goods(){
-				var good_pic = document.getElementById("good_pic").files[0]
-				var goods_name = document.getElementById("goods_name").value
-				var goods_price = document.getElementById("goods_price").value
-				firebase.storage().ref("imagess/"+uuidv4()).put(good_pic).then( function(snapshot) {
-					return snapshot.ref.getDownloadURL();
-				}).then(function(downloadURL){
-					var value = firebase.database().ref("goods").push({"goods_name":goods_name,"goods_price":goods_price,"downloadURL":downloadURL})
-					firebase.database().ref("goods/"+value.key+"/"+user_Id).set(true)
-				}).then(function(){
-					window.alert("新增成功")
-				})
-			}
 			function uuidv4() {
 				return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
 					var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
