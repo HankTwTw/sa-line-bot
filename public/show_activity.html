@@ -220,7 +220,7 @@
 				liff.getProfile().then(function(profile) {
 					name = profile.displayName
                     user_Id = profile.userId
-                    firebase.database().ref("user/"+user_Id).on('value', function(snapshot) {
+                    firebase.database().ref("user/"+user_Id).once('value', function(snapshot) {
                         if(snapshot.hasChild('isbusiness'))
                         {
                             document.getElementById("fixedbutton1").classList.remove('hidden');
