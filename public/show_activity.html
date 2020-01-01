@@ -45,6 +45,9 @@
             width: 100px;
             padding-top: 15px;
         }
+        .modal-body{
+            height: 560px;
+        }
 
       
     </style>
@@ -132,14 +135,7 @@
               
 		<%}%>
 	</script>
-<script>
-$('input[type="text"]').on('click', function () {
-  var target = this;
-  setTimeout(function(){
-        target.scrollIntoViewIfNeeded();
-        console.log('scrollIntoViewIfNeeded');
-      },400);
-});</script>
+
 
 	<script>
 			var firebaseConfig = {
