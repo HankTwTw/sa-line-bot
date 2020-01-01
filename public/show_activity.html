@@ -19,6 +19,25 @@
 
     </head>
     <style>
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 150px;
+            height: 150px;
+            -webkit-animation: spin 2s linear infinite; /* Safari */
+            animation: spin 2s linear infinite;
+            margin: 0 auto;  
+        }
+        @-webkit-keyframes spin {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
         body{
             margin: 0 auto;
             font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
@@ -59,6 +78,11 @@
         .add_btn_{
             width: 45%;
         }
+        .hidden{
+            display: none;
+        }
+     
+	
 
 
       
@@ -66,13 +90,13 @@
 	<body>
        
 
-        <div id = "fixedbutton1">
+        <div id = "fixedbutton1" class="hidden">
                  <button class="btn btn-info" id=fixedbutton data-toggle="modal" data-target="#myModal">新增活動</button>
-
         </div>
        
     <div id="card_loop">
-        <div class="all_card">
+        <div class="loader"id="loader"></div>
+        <!-- <div class="all_card">
           <div class="card" style="width: 18rem;">
             <img src="https://firebasestorage.googleapis.com/v0/b/golf-67815.appspot.com/o/%E7%90%83%E5%A0%B4%E7%85%A7%E7%89%87%2F%E5%86%8D%E8%88%882000x1500.jpg?alt=media&token=877e8ac8-a184-4127-8f56-e87904020c8a" class="card-img-top" alt="...">
             <div class="card-body card-t">
@@ -83,32 +107,29 @@
                 <p class="card-text">時間:12312312412</p>
                 <p class="card-text">人數:0/50</p>
               </div>
-            </div>
-           
-               
-            
             <div class="card-body card-body_btn">
               <a href="#collapseExample" class="btn btn-primary card-link" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">詳細資訊</a>
               <a href="#collapseExample" class="btn btn-primary card-link-right" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">參加活動</a>
             </div>
           </div>
-        </div>
+        </div> -->
     </div>
+
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">
-                            <label for="exampleFormControlInput1">活動預覽照片</label>
+                            <label >活動預覽照片</label>
                             <input type="file"class="form-control" id="activity_pic" accept="image/gif, image/jpeg, image/png, image/jpg"/>
-                            <label for="exampleFormControlInput1">活動標題</label>
+                            <label >活動標題</label>
                             <input type="text" class="form-control" id="activity_title" placeholder="">
-                            <label for="exampleFormControlInput1">活動時間</label>
+                            <label >活動時間</label>
                             <input type="datetime-local" class="form-control" id="activity_time" placeholder="">
-                            <label for="exampleFormControlInput1">活動地點</label>
+                            <label >活動地點</label>
                             <input type="text" class="form-control" id="activity_place" placeholder="">
-                            <label for="exampleFormControlInput1">活動人數</label>
+                            <label >活動人數</label>
                             <input type="number" class="form-control" id="activity_limit" placeholder="">
-                            <label for="exampleFormControlInput1">活動簡介</label>
+                            <label >活動簡介</label>
                             <input type="text" class="form-control" id="activity_intro" placeholder="">
                             <div id="add_btn">
                                 <button type="button" class="btn btn-default btn-primary add_btn_"data-dismiss="modal">關閉</button>
@@ -130,7 +151,7 @@
                     <div class="card-body card-t">
                       <h2 class="card-title"><%=items[i].activity_title%></h2>
                       <p class="card-text"><%=items[i].activity_intro%></p>
-                      <div class="collapse" id="collapseExample">
+                      <div class="collapse" id="collapse<%=i%>">
                         <p class="card-text">地點:<%=items[i].activity_place%></p>
                         <p class="card-text">時間:<%=items[i].activity_time%></p>
                         <p class="card-text">人數:<%=items[i].activity_limit%></p>
@@ -139,7 +160,7 @@
                            
 
                     <div class="card-body card-body_btn">
-                      <a href="#collapseExample" class="btn btn-primary card-link" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">詳細資訊</a>
+                      <a href="#collapse<%=i%>" class="btn btn-primary card-link" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">詳細資訊</a>
                       <a href="#collapseExample" class="btn btn-primary card-link-right" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">參加活動</a>
                     </div>
                   </div>
@@ -198,13 +219,20 @@
 			async function initializeApp() {
 				liff.getProfile().then(function(profile) {
 					name = profile.displayName
-					user_Id = profile.userId
+                    user_Id = profile.userId
+                    firebase.database().ref("user"+user_Id).on('value', function(snapshot) {
+                        if(snapshot.hasChild(isbusiness))
+                        {
+                            document.getElementById("fixedbutton1").classList.remove('hidden');
+                        }
+                    })
 					firebase.database().ref("activity").on('value', function(snapshot) {
 						let datas=[]
 						snapshot.forEach(function(snap){
                             datas.push({activity_pic:snap.val().activity_pic,activity_title:snap.val().activity_title,activity_place:snap.val().activity_place,activity_limit:snap.val().activity_limit,activity_time:snap.val().activity_time,activity_intro:snap.val().activity_intro})		
 						})
-						let data={items:datas}
+                        let data={items:datas}
+                        document.getElementById("loader").classList.add('hidden');
 						let html = template(document.getElementById('tpl').innerHTML,data);
 						document.getElementById('card_loop').innerHTML = html;
 						datas=[]
