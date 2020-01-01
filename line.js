@@ -78,7 +78,7 @@ app.get('/send-id', function(req, res) {
       case "postback":
         if(event.postback.data=="main_page_next"){client.linkRichMenuToUser(userId,"richmenu-2fcea0b029a3f47117862f8298a2aa04")}
         else if(event.postback.data=="main_page_return"){client.linkRichMenuToUser(userId,"richmenu-55542ba438c0e60c746c24edc4da87b7")}
-        else if(event.postback.data=="business_main_page_next"){client.linkRichMenuToUser(userId,"richmenu-e91fe60b822d0b44462436cc4ec6f9d1")}
+        else if(event.postback.data=="business_main_page_next"){client.linkRichMenuToUser(userId,"richmenu-043292b315a30bc1952ce778c2ff8b1b")}
         else if(event.postback.data=="business_main_page_return"){client.linkRichMenuToUser(userId,"richmenu-0242f368349fa13f1cc35b49ff22f14b")}
       case "beacon":
         break;
