@@ -240,7 +240,7 @@
 						let html = template(document.getElementById('tpl').innerHTML,data);
 						document.getElementById('card_loop').innerHTML = html;
                         datas=[]
-                        if(!document.getElementById("loader").classList.contains("hidden")){
+                        if(!document.getElementById("loader").classList!=null){
                             document.getElementById("loader").classList.add('hidden');
                         }
                     })
