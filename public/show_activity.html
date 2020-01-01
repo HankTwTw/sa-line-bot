@@ -161,7 +161,7 @@
 
                     <div class="card-body card-body_btn">
                       <a href="#collapse<%=i%>" class="btn btn-primary card-link" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">詳細資訊</a>
-                      <a href="" class="btn btn-primary card-link-right" onclick="attend('<%=items[i].activity_key%>')" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">參加活動</a>
+                      <a href="" class="btn btn-primary card-link-right" onclick="attend('<%=items[i].activity_key%>')" >參加活動</a>
                       <!-- <a class="btn btn-primary card-link-right" onclick="attend('<%=items[i].activity_key%>')" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">退出活動</a> -->
                     </div>
                   </div>
@@ -218,7 +218,7 @@
 			}
 			var have_money,name,user_Id,is_business;		
 			async function initializeApp() {
-				liff.getProfile().then(function(profile) {
+				liff.getProfile().then(async function(profile) {
 					name = profile.displayName
                     user_Id = profile.userId
                     firebase.database().ref("user/"+user_Id).once('value', function(snapshot) {
@@ -227,7 +227,7 @@
                             document.getElementById("fixedbutton1").classList.remove('hidden');
                         }
                     })
-					firebase.database().ref("activity").on('value', function(snapshot) {
+					await firebase.database().ref("activity").on('value', function(snapshot) {
 						let datas=[]
 						snapshot.forEach(function(snap){
                             if(snap.val().attend!=undefined)
@@ -240,10 +240,8 @@
 						let html = template(document.getElementById('tpl').innerHTML,data);
 						document.getElementById('card_loop').innerHTML = html;
                         datas=[]
-                        if(!document.getElementById("loader").classList.contains("hidden")){
-                            document.getElementById("loader").classList.add('hidden');
-                        }
                     })
+                    document.getElementById("loader").classList.add('hidden');
                     
 				})
             }
