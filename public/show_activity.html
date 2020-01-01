@@ -95,7 +95,7 @@
         </div>
        
     <div id="card_loop">
-        <div class="loader"id="loader"></div>
+        <div class="loader hi"id="loader"></div>
         <!-- <div class="all_card">
           <div class="card" style="width: 18rem;">
             <img src="https://firebasestorage.googleapis.com/v0/b/golf-67815.appspot.com/o/%E7%90%83%E5%A0%B4%E7%85%A7%E7%89%87%2F%E5%86%8D%E8%88%882000x1500.jpg?alt=media&token=877e8ac8-a184-4127-8f56-e87904020c8a" class="card-img-top" alt="...">
@@ -161,7 +161,7 @@
 
                     <div class="card-body card-body_btn">
                       <a href="#collapse<%=i%>" class="btn btn-primary card-link" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">詳細資訊</a>
-                      <a class="btn btn-primary card-link-right" onclick="attend('<%=items[i].activity_key%>')" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">參加活動</a>
+                      <a href="" class="btn btn-primary card-link-right" onclick="attend('<%=items[i].activity_key%>')" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">參加活動</a>
                       <!-- <a class="btn btn-primary card-link-right" onclick="attend('<%=items[i].activity_key%>')" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">退出活動</a> -->
                     </div>
                   </div>
@@ -240,7 +240,7 @@
 						let html = template(document.getElementById('tpl').innerHTML,data);
 						document.getElementById('card_loop').innerHTML = html;
                         datas=[]
-                        if(!document.getElementById("loader").classList!=null){
+                        if(!document.getElementById("loader").classList.contains("hidden")){
                             document.getElementById("loader").classList.add('hidden');
                         }
                     })
