@@ -161,7 +161,7 @@
 
                     <div class="card-body card-body_btn">
                       <a href="#collapse<%=i%>" class="btn btn-primary card-link" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">詳細資訊</a>
-                      <%if(!items[i].attend_check==true{%>
+                      <%if(!items[i].attend_check==true){%>
                       <a href="#c" class="btn btn-primary card-link-right" onclick="attend('<%=items[i].activity_key%>')" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">參加活動</a>
                       <%}else{%>
                       <a class="btn btn-primary card-link-right" onclick="quit('<%=items[i].activity_key%>')" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">退出活動</a>
