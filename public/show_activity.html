@@ -34,13 +34,13 @@
            margin: 0 auto;
         }
         .card-t{
-            font-size: 25px;
+            font-size: 20px;
         }
         .all_card{
             padding: 15px 0 15px 0 ;
         }
         .collapse{
-            font-size: 20px;
+            font-size: 15px;
         }
         #fixedbutton1{
             margin: 0 auto;
@@ -65,16 +65,15 @@
             <div class="card-body card-t">
               <h2 class="card-title">風景遊玩</h2>
               <p class="card-text">假日找個時間一起出遊</p>
+              <div class="collapse" id="collapseExample">
+                <p class="card-text">地點:桃園市平鎮區廣泰路210項25弄1號2樓</p>
+                <p class="card-text">時間:12312312412</p>
+                <p class="card-text">人數:0/50</p>
+              </div>
             </div>
-            <div class="collapse" id="collapseExample">
-                <div class="card card-body">
-                    <ul class="list-group list-group-flush">
-                    <li class="list-group-item">地點:桃園市平鎮區廣泰路210項25弄1號2樓</li>
-                    <li class="list-group-item">時間:12312312412</li>
-                    <li class="list-group-item">人數:0/50</li>
-                    </ul>
-                </div>
-            </div>
+           
+               
+            
             <div class="card-body card-body_btn">
               <a href="#collapseExample" class="btn btn-primary card-link" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">詳細資訊</a>
               <a href="#collapseExample" class="btn btn-primary card-link-right" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">參加活動</a>
@@ -118,16 +117,14 @@
                     <div class="card-body card-t">
                       <h2 class="card-title"><%=items[i].activity_title%></h2>
                       <p class="card-text"><%=items[i].activity_intro%></p>
+                      <div class="collapse" id="collapseExample">
+                        <p class="card-text">地點:<%=items[i].activity_place%></p>
+                        <p class="card-text">時間:<%=items[i].activity_time%></p>
+                        <p class="card-text">人數:<%=items[i].activity_limit%></p>
+                      </div>
                     </div>
-                    <div class="collapse" id="collapseExample">
-                        <div class="card card-body">
-                            <ul class="list-group list-group-flush">
-                            <li class="list-group-item">地點:<%=items[i].activity_place%></li>
-                            <li class="list-group-item">時間:<%=items[i].activity_time%></li>
-                            <li class="list-group-item">人數:<%=items[i].activity_limit%></li>
-                            </ul>
-                        </div>
-                    </div>
+                           
+
                     <div class="card-body card-body_btn">
                       <a href="#collapseExample" class="btn btn-primary card-link" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">詳細資訊</a>
                       <a href="#collapseExample" class="btn btn-primary card-link-right" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">參加活動</a>
