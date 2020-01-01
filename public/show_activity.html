@@ -154,7 +154,7 @@
                       <div class="collapse" id="collapse<%=i%>">
                         <p class="card-text">地點:<%=items[i].activity_place%></p>
                         <p class="card-text">時間:<%=items[i].activity_time%></p>
-                        <p class="card-text">人數:<%=items[i].activity_limit%></p>
+                        <p class="card-text">人數:<%=items[i].attend_people_length%>/<%=items[i].activity_limit%></p>
                       </div>
                     </div>
                            
@@ -231,17 +231,20 @@
                         }
                     })
 					await firebase.database().ref("activity").on('value', function(snapshot) {
-                        let datas=[]
-                        let attend_check = false
+                        let datas=[];
+                        let attend_check = false;
+                        let attend_people_length = 0 ;
 						snapshot.forEach(function(snap){
                             if(snap.val().attend_people!=undefined)
                             {
+                                attend_people_length=sna.val().attend_people.length
                                 if(snap.val().attend_people[user_Id]){
                                     attend_check=true
                                 }
                             }
-                            datas.push({attend_check:attend_check,activity_key:snap.key,activity_pic:snap.val().activity_pic,activity_title:snap.val().activity_title,activity_place:snap.val().activity_place,activity_limit:snap.val().activity_limit,activity_time:snap.val().activity_time,activity_intro:snap.val().activity_intro})		
+                            datas.push({attend_people_length:attend_people_length,attend_check:attend_check,activity_key:snap.key,activity_pic:snap.val().activity_pic,activity_title:snap.val().activity_title,activity_place:snap.val().activity_place,activity_limit:snap.val().activity_limit,activity_time:snap.val().activity_time,activity_intro:snap.val().activity_intro})		
                             attend_check = false
+                            attend_people_length = 0
                         })
                         let data={items:datas}
 						let html = template(document.getElementById('tpl').innerHTML,data);
