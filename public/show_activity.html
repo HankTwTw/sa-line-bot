@@ -237,8 +237,8 @@
 						snapshot.forEach(function(snap){
                             if(snap.val().attend_people!=undefined)
                             {
-                                console.log(snap.val().attend_people)
-                                attend_people_length=snap.val().attend_people.length
+                                console.log(Object.keys(snap.val().attend_people))
+                                attend_people_length=Object.keys(snap.val().attend_people).length
                                 console.log(attend_people_length)
                                 if(snap.val().attend_people[user_Id]){
                                     attend_check=true
