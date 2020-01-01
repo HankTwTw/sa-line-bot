@@ -71,6 +71,10 @@ app.get('/send-id', function(req, res) {
         client.replyMessage(event.replyToken,line_message.getting_business_setting())
         admin.database().ref("user/"+userId).set({"name":userName,"userId":userId,"userImg":userImg,"cash":0})
         break;
+      case "postback":
+        if(event.postback.data=="main_page_next"){client.linkRichMenuToUser(userId,"richmenu-2fcea0b029a3f47117862f8298a2aa04")}
+        else if(event.postback.data=="main_page_return"){client.linkRichMenuToUser(userId,"richmenu-55542ba438c0e60c746c24edc4da87b7")}
+        
       case "beacon":
         break;
     }
