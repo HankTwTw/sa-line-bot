@@ -9,26 +9,15 @@
 		<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script>
-		<link rel="stylesheet" href="./bootstrap.min.css">
-		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <script src="./template.js"></script>
-
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title>活動紀錄</title>
+        <title>活動紀錄</title>
 
-
-
-        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>  
-
-        <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> 
-        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-        <script src="https://cdn.bootcss.com/moment.js/2.18.1/moment-with-locales.min.js"></script>  
-        <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-        <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>  
-
-	</head>
+    </head>
     <style>
         body{
             margin: 0 auto;
@@ -62,25 +51,8 @@
       
     </style>
 	<body>
-        <label for="">選擇日期：</label> 
+       
 
-        <div class="input-group date" id='date1'>  
-
-              <input type="text" class="form-control" />  
-
-              <span class="input-group-addon">  
-                  <i class="glyphicon glyphicon-calendar"></i>  
-              </span>  
-          </div>  
-
-<script>
-
-$('#date1').datetimepicker({  
-
-  format: 'YYYY-MM-DD hh:mm:ss',  
-  locale: moment.locale('zh-cn')  
-});
-</script>
         <div id = "fixedbutton1">
                  <button class="btn btn-info" id=fixedbutton data-toggle="modal" data-target="#myModal">新增活動</button>
 
@@ -119,7 +91,7 @@ $('#date1').datetimepicker({
                             <label for="exampleFormControlInput1">活動標題</label>
                             <input type="text" class="form-control" id="goods_name" placeholder="">
                             <label for="exampleFormControlInput1">活動時間</label>
-                            <input type="text" class="form-control" id="goods_name" placeholder="">
+                            <input type="datetime-local" class="form-control" id="goods_name" placeholder="">
                             <label for="exampleFormControlInput1">活動地點</label>
                             <input type="text" class="form-control" id="goods_name" placeholder="">
                             <label for="exampleFormControlInput1">活動人數</label>
