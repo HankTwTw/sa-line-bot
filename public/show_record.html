@@ -103,7 +103,7 @@
                             {
                                 console.log(snap.val()[user_Id])
                                 console.log(snap.val())
-                                if(snap.val().type=="buy_good")
+                                if(snap.val().type=="buy_goods")
                                 {
                                     if(snap.val()[user_Id]=="pay")
                                     {
@@ -119,7 +119,7 @@
                                         datas.push({"message":"送給"+snap.val().get_name+"紅包"+snap.val().tran_amount+"元"})
                                     }
                                     else{
-                                        datas.push({"message":"從"+snap.val().pay_name+"收到紅包"+snap.val().tran_amount+"元"})
+                                        datas.push({"message":snap.val().pay_name+"送了紅包"+snap.val().tran_amount+"元給您"})
                                     }
                                 }
                                
