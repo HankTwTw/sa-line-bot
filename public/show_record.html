@@ -34,7 +34,7 @@
 
    
 		<%for(let i in items){%>
-			<li class="list-group-item">Cras justo odio</li>
+			<li class="list-group-item"><%=items[i].message%></li>
 		<%}%>
 	</script>
 
@@ -103,12 +103,24 @@
                             {
                                 console.log(snap.val()[user_Id])
                                 console.log(snap.val())
-                                if(snap.val()[user_Id]=="pay")
+                                if(snap.val().type=="buy_good")
                                 {
-                                    datas.push({"message":"付給"+snap.val()[user_Id]})
+                                    if(snap.val()[user_Id]=="pay")
+                                    {
+                                        datas.push({"message":"購買商品付給"+snap.val().get_name+snap.val().tran_amount+"元"})
+                                    }
+                                    else{
+                                        datas.push({"message":"販賣商品從"+snap.val().pay_name+"收到"+snap.val().tran_amount+"元"})
+                                    }
                                 }
                                 else{
-
+                                    if(snap.val()[user_Id]=="pay")
+                                    {
+                                        datas.push({"message":"送給"+snap.val().get_name+"紅包"+snap.val().tran_amount+"元"})
+                                    }
+                                    else{
+                                        datas.push({"message":"從"+snap.val().pay_name+"收到紅包"+snap.val().tran_amount+"元"})
+                                    }
                                 }
                                
                             }

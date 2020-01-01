@@ -97,7 +97,6 @@ function scan(){
     liff.scanCode().then(result => {
         // e.g. result = { value: "Hello LIFF app!" }
         const stringifiedResult = result.value;
-
         scan_user_Id = stringifiedResult;
         firebase.database().ref("user/"+scan_user_Id).once("value",function(snap){
             name = snap.val().name;
