@@ -133,7 +133,7 @@
                             <input type="text" class="form-control" id="activity_intro" placeholder="">
                             <div id="add_btn">
                                 <button type="button" class="btn btn-default btn-primary add_btn_"data-dismiss="modal">關閉</button>
-                                <button type="button" onclick="add_activity()" class="btn btn-primary add_btn_right  add_btn_" data-dismiss="modal">新增</button>
+                                <button type="button" onclick="add_activity()" class="btn btn-primary add_btn_right  add_btn_" data-dismiss="modal" >新增</button>
                             </div>
                     </div>
                 </div>
@@ -161,7 +161,7 @@
 
                     <div class="card-body card-body_btn">
                       <a href="#collapse<%=i%>" class="btn btn-primary card-link" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">詳細資訊</a>
-                      <a class="btn btn-primary card-link-right" onclick="attend('<%=items[i].activity_key%>')">參加活動</a>
+                      <a class="btn btn-primary card-link-right" onclick="attend('<%=items[i].activity_key%>')" data-toggle="collapse"  role="button" aria-expanded="false" aria-controls="collapseExample">參加活動</a>
                       
                     </div>
                   </div>
@@ -239,7 +239,6 @@
                         if(!document.getElementById("loader").classList.contains("hidden")){
                             document.getElementById("loader").classList.add('hidden');
                         }
-                       
                     })
                     
 				})
