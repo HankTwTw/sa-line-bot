@@ -46,18 +46,11 @@ app.get('/send-id', function(req, res) {
     res.json({show_id: process.env.myLiffId_show,scan_id: process.env.myLiffId_scan,business_register:process.env.business_register,business_show_goods:process.env.business_show_goods,buy_goods:process.env.buy_goods,show_record:process.env.show_record,show_activity:process.env.show_activity});
 });
 app.get('/notify', function(req, res) {
-  console.log(req.query.message);
   request({
         method   : "post",
         url      : 'https://notify-api.line.me/api/notify',
         headers  : {'Authorization': 'Bearer KZIXUzjgr1upcYEQ9VBnXehHcMasvIC0nRNlEwbU7zk',"Content-Type":"application/x-www-form-urlencoded"},
-        formData : {"message":"123"},
-    })
-    .then(res => {
-        console.log(JSON.parse(res.body));
-    })
-    .catch(err => {
-        console.log(JSON.parse(err.error));
+        formData : {"message":req.query.message}
     })
   
 });
