@@ -119,7 +119,12 @@ var getting_get_money_message={
     }
   }
 }
-var getting_activity_message={
+var getting_activity_message=
+{
+  "type": "flex",
+  "altText": "Flex Message",
+  "contents": 
+{
   "type": "bubble",
   "size": "mega",
   "header": {
@@ -458,6 +463,7 @@ var getting_activity_message={
       }
     ]
   }
+}
 }
 module.exports = {
     // get_search_opengroup_message: function () {
