@@ -104,6 +104,7 @@ app.get('/send-id', function(req, res) {
         else if(event.postback.data=="main_page_return"){client.linkRichMenuToUser(userId,"richmenu-55542ba438c0e60c746c24edc4da87b7")}
         else if(event.postback.data=="business_main_page_next"){client.linkRichMenuToUser(userId,"richmenu-d62d715409c73447326dad5dd5113b82")}
         else if(event.postback.data=="business_main_page_return"){client.linkRichMenuToUser(userId,"richmenu-0242f368349fa13f1cc35b49ff22f14b")}
+        break;
       case "beacon":
         client.replyMessage(event.replyToken,line_message.getting_get_money_message())
         break;
