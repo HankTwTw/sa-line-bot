@@ -3,7 +3,7 @@ var line = require("@line/bot-sdk")
 var express = require("express")
 var admin = require("firebase-admin")
 var line_message = require("./line_object.js")
-const fetch = require("node-fetch");
+var request = require("request")
 const config = {
     channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN,
     channelSecret: process.env.CHANNEL_SECRET,
@@ -47,8 +47,19 @@ app.get('/send-id', function(req, res) {
 });
 app.get('/notify', function(req, res) {
   console.log(req.query.message);
-  const options = { method: 'POST', headers: {'Authorization': 'Bearer KZIXUzjgr1upcYEQ9VBnXehHcMasvIC0nRNlEwbU7zk',"Content-Type":"application/x-www-form-urlencoded"}, body: {"message":123} };
-  fetch('https://notify-api.line.me/api/notify', options);
+  request({
+        method   : "post",
+        url      : 'https://notify-api.line.me/api/notify',
+        headers  : {'Authorization': 'Bearer KZIXUzjgr1upcYEQ9VBnXehHcMasvIC0nRNlEwbU7zk',"Content-Type":"application/x-www-form-urlencoded"},
+        formData : {"message":"123"},
+    })
+    .then(res => {
+        console.log(JSON.parse(res.body));
+    })
+    .catch(err => {
+        console.log(JSON.parse(err.error));
+    })
+  
 });
 
   async function handleEvent(event) {
