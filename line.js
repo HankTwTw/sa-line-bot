@@ -86,6 +86,10 @@ app.get('/send-id', function(req, res) {
         else if (orginal_text == "/使用者"){
           client.replyMessage(event.replyToken,{"type":"text","text":"歡迎"+userName+"使用我們的機器人，可以透過下方選單選擇您的功能，透過參加活動與拿紅包可以拿到樂幣，樂幣可以兌換商品。"})
         }
+        else if (orginal_text == "/活動流程")
+        {
+          client.replyMessage(event.replyToken,line_message.getting_activity_message())
+        }
         break;
       case "follow":
         client.replyMessage(event.replyToken,line_message.getting_business_setting())
@@ -101,6 +105,7 @@ app.get('/send-id', function(req, res) {
         else if(event.postback.data=="business_main_page_next"){client.linkRichMenuToUser(userId,"richmenu-d62d715409c73447326dad5dd5113b82")}
         else if(event.postback.data=="business_main_page_return"){client.linkRichMenuToUser(userId,"richmenu-0242f368349fa13f1cc35b49ff22f14b")}
       case "beacon":
+        client.replyMessage(event.replyToken,line_message.getting_get_money_message)
         break;
     }
 

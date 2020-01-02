@@ -268,7 +268,9 @@
                 let activity_title = document.getElementById("activity_title").value
                 let activity_place = document.getElementById("activity_place").value
                 let activity_limit = document.getElementById("activity_limit").value
-                let activity_time = document.getElementById("activity_time").value
+                let get_time = document.getElementById("activity_time").value
+                var activity_time_obj = new Date(get_time);
+                activity_time=activity_time_obj.toLocaleString().substring(0,activity_time_obj.toLocaleString().length-3)
                 let activity_intro = document.getElementById("activity_intro").value
                 firebase.storage().ref("imagess/"+uuidv4()).put(activity_pic).then( function(snapshot) {
 					return snapshot.ref.getDownloadURL();
