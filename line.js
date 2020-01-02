@@ -47,7 +47,7 @@ app.get('/send-id', function(req, res) {
 });
 app.get('/notify', function(req, res) {
   console.log(req.query.message);
-  const options = { method: 'POST', headers: {'Authorization': 'Bearer KZIXUzjgr1upcYEQ9VBnXehHcMasvIC0nRNlEwbU7zk'}, body: {"message":123} };
+  const options = { method: 'POST', headers: {'Authorization': 'Bearer KZIXUzjgr1upcYEQ9VBnXehHcMasvIC0nRNlEwbU7zk',"Content-Type":"application/x-www-form-urlencoded"}, body: {"message":123} };
   fetch('https://notify-api.line.me/api/notify', options);
 });
 
