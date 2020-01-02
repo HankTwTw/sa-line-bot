@@ -56,9 +56,9 @@ app.get('/send-id', function(req, res) {
     var is_user = false;
     var have_money;
     var is_user_message;
-    await admin.database().ref("/user/"+userId).on("value",function(snapshot){
+    admin.database().ref("/user/"+userId).on("value",function(snapshot){
       is_user = snapshot.hasChild("isbusiness")
-      have_money = snapshot.val().cash
+      have_money = snapshot.hasChild("isbusiness") ? snapshot.val().cash :0
       is_user_message = is_user ? "管理者" : "使用者"
     })
     await client.getProfile(userId).then((profile) =>
