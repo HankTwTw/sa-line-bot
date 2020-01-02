@@ -83,6 +83,9 @@ app.get('/send-id', function(req, res) {
         else if (orginal_text == "/個人資料"){
           client.replyMessage(event.replyToken,line_message.getting_profile_message(is_user_message,userName,have_money))
         }
+        else if (orginal_text == "/使用者"){
+          client.replyMessage(event.replyToken,{"type":"text","text":"歡迎"+userName+"使用我們的機器人，可以透過下方選單選擇您的功能，透過參加活動與拿紅包可以拿到樂幣，樂幣可以兌換商品。"})
+        }
         break;
       case "follow":
         client.replyMessage(event.replyToken,line_message.getting_business_setting())

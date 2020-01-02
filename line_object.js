@@ -9,7 +9,7 @@ var getting_business_setting = {
         {
           "type": "message",
           "label": "使用者",
-          "text": "使用者"
+          "text": "/使用者"
         },
         {
           "type": "uri",
@@ -60,7 +60,7 @@ var profile_message=
             "contents": [
               {
                 "type": "text",
-                "text": "剩餘金額",
+                "text": "擁有樂幣",
                 "size": "xxl",
                 "color": "#555555",
                 "flex": 0
