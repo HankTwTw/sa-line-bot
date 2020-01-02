@@ -47,17 +47,9 @@ app.get('/send-id', function(req, res) {
 });
 app.get('/notify', function(req, res) {
   console.log(req.query.message);
-  fetch('https://notify-api.line.me/api/notify', {
-        'headers': {
-           'Authorization': 'Bearer ' + 'KZIXUzjgr1upcYEQ9VBnXehHcMasvIC0nRNlEwbU7zk',
-        },
-        'method': 'post',
-        'payload': {
-            'message':'測試一下'
-        }
-    });
+  const options = { method: 'POST', headers: {'Authorization': 'Bearer KZIXUzjgr1upcYEQ9VBnXehHcMasvIC0nRNlEwbU7zk'}, body: {"message":123} };
+  fetch('https://notify-api.line.me/api/notify', options);
 });
-  
 
   async function handleEvent(event) {
     console.log(event);
@@ -136,6 +128,7 @@ app.get('/notify', function(req, res) {
 
     // return client.replyMessage(event.replyToken, echo);
   }
+
   
 
   const port = process.env.PORT || 8080;
