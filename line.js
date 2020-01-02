@@ -56,9 +56,10 @@ app.get('/send-id', function(req, res) {
     var is_user = false;
     var have_money;
     var is_user_message;
+    var user_check = snapshot.hasChild("name")
     admin.database().ref("/user/"+userId).on("value",function(snapshot){
       is_user = snapshot.hasChild("isbusiness")
-      have_money = snapshot.hasChild("isbusiness") ? snapshot.val().cash :0
+      have_money = user_check ? snapshot.val().cash :0
       is_user_message = is_user ? "管理者" : "使用者"
     })
     await client.getProfile(userId).then((profile) =>
@@ -84,7 +85,11 @@ app.get('/send-id', function(req, res) {
         break;
       case "follow":
         client.replyMessage(event.replyToken,line_message.getting_business_setting())
-        admin.database().ref("user/"+userId).set({"name":userName,"userId":userId,"userImg":userImg,"cash":0})
+        if(!user_check)
+        {
+          admin.database().ref("user/"+userId).set({"name":userName,"userId":userId,"userImg":userImg,"cash":0})
+        }
+        
         break;
       case "postback":
         if(event.postback.data=="main_page_next"){client.linkRichMenuToUser(userId,"richmenu-2fcea0b029a3f47117862f8298a2aa04")}
