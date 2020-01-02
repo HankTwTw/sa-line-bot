@@ -53,6 +53,14 @@ app.get('/send-id', function(req, res) {
     var userId=event.source.userId
     var userName;
     var userImg;
+    var is_user = false;
+    var have_money;
+    var is_user_message;
+    await admin.database().ref("/user/"+userId).on("value",function(snapshot){
+      is_user = snapshot.hasChild("isbusiness")
+      have_money = snapshot.val().cash
+      is_user_message = is_user ? "管理者" : "使用者"
+    })
     await client.getProfile(userId).then((profile) =>
     {
       userName = profile.displayName
@@ -70,6 +78,9 @@ app.get('/send-id', function(req, res) {
         {
           client.linkRichMenuToUser(userId,"richmenu-0242f368349fa13f1cc35b49ff22f14b")
         }
+        else if (orginal_text == "/個人資料"){
+          client.replyMessage(event.replyToken,line_message.getting_profile_message(is_user_message,userName,have_money))
+        }
         break;
       case "follow":
         client.replyMessage(event.replyToken,line_message.getting_business_setting())
@@ -78,7 +89,7 @@ app.get('/send-id', function(req, res) {
       case "postback":
         if(event.postback.data=="main_page_next"){client.linkRichMenuToUser(userId,"richmenu-2fcea0b029a3f47117862f8298a2aa04")}
         else if(event.postback.data=="main_page_return"){client.linkRichMenuToUser(userId,"richmenu-55542ba438c0e60c746c24edc4da87b7")}
-        else if(event.postback.data=="business_main_page_next"){client.linkRichMenuToUser(userId,"richmenu-043292b315a30bc1952ce778c2ff8b1b")}
+        else if(event.postback.data=="business_main_page_next"){client.linkRichMenuToUser(userId,"richmenu-d62d715409c73447326dad5dd5113b82")}
         else if(event.postback.data=="business_main_page_return"){client.linkRichMenuToUser(userId,"richmenu-0242f368349fa13f1cc35b49ff22f14b")}
       case "beacon":
         break;
