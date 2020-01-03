@@ -109,7 +109,7 @@ app.get('/notify', function(req, res) {
         break;
       case "postback":
         if(is_user_message=="管理者"){
-          if(event.postback.data=="main_page_next"||event.postback.data=="business_main_page_next"){client.linkRichMenuToUser(userId,"richmenu-3cecb51ae701601682288d9c289d3cba")}
+          if(event.postback.data=="main_page_next"||event.postback.data=="business_main_page_next"){client.linkRichMenuToUser(userId,"richmenu-93ddf88f5ab73ee7511ff66d7109b15d")}
           else if(event.postback.data=="main_page_return"||event.postback.data=="business_main_page_return"){client.linkRichMenuToUser(userId,"richmenu-3221629749ff48c684e8f00fd4675aac")}
         }
         else{
