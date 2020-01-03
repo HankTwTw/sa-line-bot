@@ -490,7 +490,7 @@ var intro_message={
         },
         "hero": {
           "type": "image",
-          "url": "https://firebasestorage.googleapis.com/v0/b/sasa-ec240.appspot.com/o/member image/give_red_envelope.png?alt=media&token=4543eb71-0e9e-4d5a-a077-515168c78931",
+          "url": "https://firebasestorage.googleapis.com/v0/b/sasa-ec240.appspot.com/o/member%20image%2Fgive_red_envelope.png?alt=media&token=4543eb71-0e9e-4d5a-a077-515168c78931",
           "size": "full",
           "aspectRatio": "1.51:1",
           "aspectMode": "fit"
@@ -581,7 +581,7 @@ var intro_message={
         },
         "hero": {
           "type": "image",
-          "url": "https://firebasestorage.googleapis.com/v0/b/sasa-ec240.appspot.com/o/member image/event.png?alt=media&token=be6a7178-2432-431b-b279-4eabeecb8150",
+          "url": "https://firebasestorage.googleapis.com/v0/b/sasa-ec240.appspot.com/o/member%20image%2Fevent.png?alt=media&token=be6a7178-2432-431b-b279-4eabeecb8150",
           "size": "full",
           "aspectRatio": "1.51:1",
           "aspectMode": "fit"
@@ -655,7 +655,7 @@ var intro_message={
         },
         "hero": {
           "type": "image",
-          "url": "https://firebasestorage.googleapis.com/v0/b/sasa-ec240.appspot.com/o/member image/exchange_product.png?alt=media&token=a5cec880-5701-42bd-991e-51db9fc78695",
+          "url": "https://firebasestorage.googleapis.com/v0/b/sasa-ec240.appspot.com/o/member%20image%2Fexchange_product.png?alt=media&token=a5cec880-5701-42bd-991e-51db9fc78695",
           "size": "full",
           "aspectRatio": "1.51:1",
           "aspectMode": "fit"
@@ -727,7 +727,7 @@ var intro_message={
         },
         "hero": {
           "type": "image",
-          "url": "https://firebasestorage.googleapis.com/v0/b/sasa-ec240.appspot.com/o/member image/share_friend.png?alt=media&token=0f30fab1-3da1-4720-899d-72eec2598746",
+          "url": "https://firebasestorage.googleapis.com/v0/b/sasa-ec240.appspot.com/o/member%20image%2Fshare_friend.png?alt=media&token=0f30fab1-3da1-4720-899d-72eec2598746",
           "size": "full",
           "aspectRatio": "1.51:1",
           "aspectMode": "fit"
@@ -799,7 +799,7 @@ var intro_message={
         },
         "hero": {
           "type": "image",
-          "url": "https://firebasestorage.googleapis.com/v0/b/sasa-ec240.appspot.com/o/member image/personal information.png?alt=media&token=456506ae-a4bd-4cef-bb61-a0acdf42be77",
+          "url": "https://firebasestorage.googleapis.com/v0/b/sasa-ec240.appspot.com/o/member%20image%2Fpersonal%20information.png?alt=media&token=456506ae-a4bd-4cef-bb61-a0acdf42be77",
           "size": "full",
           "aspectRatio": "1.51:1",
           "aspectMode": "fit"

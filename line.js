@@ -92,7 +92,7 @@ app.get('/notify', function(req, res) {
           client.replyMessage(event.replyToken,line_message.getting_profile_message(is_user_message,userName,have_money))
         }
         else if (orginal_text == "/使用者"){
-          client.replyMessage(event.replyToken,line_message.getting_intro_message())
+          client.replyMessage(event.replyToken,[line_message.getting_intro_message(),{"type":"text","text":"歡迎"+userName+"使用我們的機器人，請參加活動與收取紅包得到樂幣，以免費兌換商品"}])
         }
         else if (orginal_text == "/活動流程")
         {
