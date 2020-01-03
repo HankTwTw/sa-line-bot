@@ -113,8 +113,8 @@ app.get('/notify', function(req, res) {
           else if(event.postback.data=="main_page_return"||event.postback.data=="business_main_page_return"){client.linkRichMenuToUser(userId,"richmenu-a6fdd07b3e29c688450fffeb11aaad47")}
         }
         else{
-          if(event.postback.data=="main_page_next"){client.linkRichMenuToUser(userId,"richmenu-affd182d4711669d212beb811070c998")}
-          else if(event.postback.data=="main_page_return"){client.linkRichMenuToUser(userId,"richmenu-a6fdd07b3e29c688450fffeb11aaad47")}  
+          if(event.postback.data=="main_page_next"||event.postback.data=="business_main_page_next"){client.linkRichMenuToUser(userId,"richmenu-affd182d4711669d212beb811070c998")}
+          else if(event.postback.data=="main_page_return"||event.postback.data=="business_main_page_return"){client.linkRichMenuToUser(userId,"richmenu-a6fdd07b3e29c688450fffeb11aaad47")}  
         }
         
         break;
