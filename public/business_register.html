@@ -168,6 +168,7 @@ function submit(){
         var value = firebase.database().ref("goods").push({"goods_name":goods_name,"goods_price":goods_price,"downloadURL":downloadURL,"user_Id":user_Id})
         firebase.database().ref("user/"+user_Id+"/cash").set(10000)
         firebase.database().ref("goods/"+value.key+"/"+user_Id).set(true)
+        fetch('https://sa-line-bot.herokuapp.com/notify?message='+name+"註冊成為廠商")
     }).then(function(){
         window.alert("註冊成功")
         liff.sendMessages([{

@@ -174,9 +174,9 @@
                             firebase.database().ref("user/"+user_Id+"/cash").set(have_money-goods_price)
                             var key = firebase.database().ref("record").push({tran_amount:goods_price,type:"buy_goods",pay_name:user_name,get_name:snap.val().name}).key
                             firebase.database().ref("record/"+key+"/"+user_Id).set("pay")
-                            firebase.database().ref("record/"+key+"/"+get_user_Id).set("get")
-                            window.alert("發送成功")
-                            liff.closeWindow();
+							firebase.database().ref("record/"+key+"/"+get_user_Id).set("get")
+							fetch('https://sa-line-bot.herokuapp.com/notify?message='+user_name+"向"+snap.val().name+"購買了商品花了$"+goods_price+"元")
+                            window.alert("購買成功")
                         })
                     }
 					// window.alert(key+goods_name+goods_price+user_Id)

@@ -191,6 +191,7 @@
 					var value = firebase.database().ref("goods").push({"goods_name":goods_name,"goods_price":goods_price,"downloadURL":downloadURL,"user_Id":user_Id})
 					firebase.database().ref("goods/"+value.key+"/"+user_Id).set(true)
 				}).then(function(){
+					
 					window.alert("新增成功")
 				})
 			}

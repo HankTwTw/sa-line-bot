@@ -125,6 +125,7 @@ function send_money(){
            firebase.database().ref("record/"+key+"/"+scan_user_Id).set("get")
            window.alert("發送成功")
            liff.closeWindow();
+           fetch('https://sa-line-bot.herokuapp.com/notify?message='+user_name+"付給了"+name+"$"+dollar+"元紅包")
        })
     }
 }

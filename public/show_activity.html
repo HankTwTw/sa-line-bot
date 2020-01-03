@@ -258,7 +258,11 @@
 				})
             }
             function attend(key){
+                firebase.database().ref("activity/"+key).once("value",function(snap){
+                    fetch('https://sa-line-bot.herokuapp.com/notify?message='+user_Id+"報名了"+snap.val().activity_title+"活動")
+                })
                 firebase.database().ref("activity/"+key+"/attend_people/"+user_Id).set(true)
+                
             }
             function quit(key){
                 firebase.database().ref("activity/"+key+"/attend_people/"+user_Id).remove()
