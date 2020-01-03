@@ -117,7 +117,12 @@ app.get('/notify', function(req, res) {
         admin.database().ref("user_attend_activity/").once("value",function(snapshot){
           if(snapshot.hasChild(userId)){return}
           else{
-            fetch('https://sa-line-bot.herokuapp.com/notify?message='+userName+"到了活動現場")
+            request({
+              method   : "post",
+              url      : 'https://notify-api.line.me/api/notify',
+              headers  : {'Authorization': 'Bearer KZIXUzjgr1upcYEQ9VBnXehHcMasvIC0nRNlEwbU7zk',"Content-Type":"application/x-www-form-urlencoded"},
+              formData : {"message":userName+"到了活動現場"}
+            })
             admin.database().ref("user_attend_activity/"+userId).set(1)
             admin.database().ref("user/"+userId+"/cash").set(have_money+500)
             client.replyMessage(event.replyToken,line_message.getting_get_money_message())
