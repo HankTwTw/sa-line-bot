@@ -248,6 +248,7 @@
                             attend_check = false
                             attend_people_length = 0
                         })
+                        datas.reverse()
                         let data={items:datas}
 						let html = template(document.getElementById('tpl').innerHTML,data);
 						document.getElementById('card_loop').innerHTML = html;

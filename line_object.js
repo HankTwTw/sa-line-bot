@@ -465,6 +465,398 @@ var getting_activity_message=
   }
 }
 }
+var intro_message={
+  "type": "flex",
+  "altText": "Flex Message",
+  "contents": {
+    "type": "carousel",
+    "contents": [
+      {
+        "type": "bubble",
+        "direction": "ltr",
+        "header": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "紅包功能介紹",
+              "size": "xxl",
+              "align": "center",
+              "weight": "bold",
+              "color": "#0035F8"
+            }
+          ]
+        },
+        "hero": {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/sasa-ec240.appspot.com/o/member image/give_red_envelope.png?alt=media&token=4543eb71-0e9e-4d5a-a077-515168c78931",
+          "size": "full",
+          "aspectRatio": "1.51:1",
+          "aspectMode": "fit"
+        },
+        "body": {
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
+            {
+              "type": "text",
+              "text": "點擊收紅包顯示QRCODE   ↓",
+              "size": "xl",
+              "align": "center",
+              "weight": "bold",
+              "color": "#000000",
+              "wrap": true
+            },
+            {
+              "type": "text",
+              "text": "點擊送紅包掃描  QRCODE ↓",
+              "size": "xl",
+              "align": "center",
+              "weight": "bold",
+              "wrap": true
+            }
+          ]
+        },
+        "footer": {
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
+            {
+              "type": "button",
+              "action": {
+                "type": "uri",
+                "label": "收紅包",
+                "uri": "line://app/1653687101-Aq2Ogxg9"
+              },
+              "color": "#000000",
+              "gravity": "center"
+            },
+            {
+              "type": "button",
+              "action": {
+                "type": "uri",
+                "label": "送紅包",
+                "uri": "line://app/1653687101-G4dbmPmY"
+              },
+              "color": "#000000"
+            }
+          ]
+        },
+        "styles": {
+          "header": {
+            "backgroundColor": "#E1FE91"
+          },
+          "hero": {
+            "backgroundColor": "#E1FE91",
+            "separatorColor": "#000000"
+          },
+          "body": {
+            "backgroundColor": "#E1FE91",
+            "separatorColor": "#000000"
+          },
+          "footer": {
+            "backgroundColor": "#E1FE91",
+            "separator": true,
+            "separatorColor": "#000000"
+          }
+        }
+      },
+      {
+        "type": "bubble",
+        "direction": "ltr",
+        "header": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "活動功能介紹",
+              "size": "xxl",
+              "align": "center",
+              "weight": "bold",
+              "color": "#0035F8"
+            }
+          ]
+        },
+        "hero": {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/sasa-ec240.appspot.com/o/member image/event.png?alt=media&token=be6a7178-2432-431b-b279-4eabeecb8150",
+          "size": "full",
+          "aspectRatio": "1.51:1",
+          "aspectMode": "fit"
+        },
+        "body": {
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
+            {
+              "type": "text",
+              "text": "點擊最新活動，報名您喜歡的內容。",
+              "size": "xl",
+              "align": "center",
+              "weight": "bold",
+              "color": "#000000",
+              "wrap": true
+            }
+          ]
+        },
+        "footer": {
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
+            {
+              "type": "button",
+              "action": {
+                "type": "uri",
+                "label": "參加活動",
+                "uri": "line://app/1653687101-vXzkyLy5"
+              },
+              "color": "#000000",
+              "gravity": "center"
+            }
+          ]
+        },
+        "styles": {
+          "header": {
+            "backgroundColor": "#E1FE91"
+          },
+          "hero": {
+            "backgroundColor": "#E1FE91",
+            "separatorColor": "#000000"
+          },
+          "body": {
+            "backgroundColor": "#E1FE91",
+            "separatorColor": "#000000"
+          },
+          "footer": {
+            "backgroundColor": "#E1FE91",
+            "separator": true,
+            "separatorColor": "#000000"
+          }
+        }
+      },
+      {
+        "type": "bubble",
+        "direction": "ltr",
+        "header": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "兌換商品介紹",
+              "size": "xxl",
+              "align": "center",
+              "weight": "bold",
+              "color": "#0035F8"
+            }
+          ]
+        },
+        "hero": {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/sasa-ec240.appspot.com/o/member image/exchange_product.png?alt=media&token=a5cec880-5701-42bd-991e-51db9fc78695",
+          "size": "full",
+          "aspectRatio": "1.51:1",
+          "aspectMode": "fit"
+        },
+        "body": {
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
+            {
+              "type": "text",
+              "text": "蒐集樂幣來兌換商品",
+              "size": "xl",
+              "align": "center",
+              "weight": "bold",
+              "wrap": true
+            }
+          ]
+        },
+        "footer": {
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
+            {
+              "type": "button",
+              "action": {
+                "type": "uri",
+                "label": "兌換商品",
+                "uri": "line://app/1653687101-ZMvXzVz5"
+              },
+              "color": "#000000"
+            }
+          ]
+        },
+        "styles": {
+          "header": {
+            "backgroundColor": "#E1FE91"
+          },
+          "hero": {
+            "backgroundColor": "#E1FE91",
+            "separatorColor": "#000000"
+          },
+          "body": {
+            "backgroundColor": "#E1FE91",
+            "separatorColor": "#000000"
+          },
+          "footer": {
+            "backgroundColor": "#E1FE91",
+            "separator": true,
+            "separatorColor": "#000000"
+          }
+        }
+      },
+      {
+        "type": "bubble",
+        "direction": "ltr",
+        "header": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "分享好友介紹",
+              "size": "xl",
+              "align": "center",
+              "weight": "bold",
+              "color": "#0035F8"
+            }
+          ]
+        },
+        "hero": {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/sasa-ec240.appspot.com/o/member image/share_friend.png?alt=media&token=0f30fab1-3da1-4720-899d-72eec2598746",
+          "size": "full",
+          "aspectRatio": "1.51:1",
+          "aspectMode": "fit"
+        },
+        "body": {
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
+            {
+              "type": "text",
+              "text": "一鍵分享，介紹給您的親朋好友使用",
+              "size": "xl",
+              "align": "center",
+              "weight": "bold",
+              "wrap": true
+            }
+          ]
+        },
+        "footer": {
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
+            {
+              "type": "button",
+              "action": {
+                "type": "uri",
+                "label": "分享好友",
+                "uri": "line://nv/recommendOA/@296eyduj"
+              },
+              "color": "#000000"
+            }
+          ]
+        },
+        "styles": {
+          "header": {
+            "backgroundColor": "#E1FE91"
+          },
+          "hero": {
+            "backgroundColor": "#E1FE91",
+            "separatorColor": "#000000"
+          },
+          "body": {
+            "backgroundColor": "#E1FE91",
+            "separatorColor": "#000000"
+          },
+          "footer": {
+            "backgroundColor": "#E1FE91",
+            "separator": true,
+            "separatorColor": "#000000"
+          }
+        }
+      },
+      {
+        "type": "bubble",
+        "direction": "ltr",
+        "header": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "個人資料介紹",
+              "size": "xl",
+              "align": "center",
+              "weight": "bold",
+              "color": "#0035F8"
+            }
+          ]
+        },
+        "hero": {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/sasa-ec240.appspot.com/o/member image/personal information.png?alt=media&token=456506ae-a4bd-4cef-bb61-a0acdf42be77",
+          "size": "full",
+          "aspectRatio": "1.51:1",
+          "aspectMode": "fit"
+        },
+        "body": {
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
+            {
+              "type": "text",
+              "text": "查看自己的樂幣餘額",
+              "size": "xl",
+              "align": "center",
+              "weight": "bold",
+              "color": "#000000",
+              "wrap": true
+            }
+          ]
+        },
+        "footer": {
+          "type": "box",
+          "layout": "horizontal",
+          "contents": [
+            {
+              "type": "button",
+              "action": {
+                "type": "message",
+                "label": "個人資料",
+                "text": "/個人資料"
+              },
+              "color": "#000000",
+              "gravity": "center"
+            }
+          ]
+        },
+        "styles": {
+          "header": {
+            "backgroundColor": "#E1FE91"
+          },
+          "hero": {
+            "backgroundColor": "#E1FE91",
+            "separatorColor": "#000000"
+          },
+          "body": {
+            "backgroundColor": "#E1FE91",
+            "separatorColor": "#000000"
+          },
+          "footer": {
+            "backgroundColor": "#E1FE91",
+            "separator": true,
+            "separatorColor": "#000000"
+          }
+        }
+      }
+    ]
+  }
+}
 module.exports = {
     // get_search_opengroup_message: function () {
     //   let setmessage=JSON.parse(JSON.stringify(search_group_message))
@@ -479,5 +871,6 @@ module.exports = {
       return setmessage
     },
     getting_get_money_message:function(){return getting_get_money_message},
-    getting_activity_message:function(){return getting_activity_message}
+    getting_activity_message:function(){return getting_activity_message},
+    getting_intro_message:function(){return intro_message}
 }

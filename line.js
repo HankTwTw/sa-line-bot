@@ -92,7 +92,7 @@ app.get('/notify', function(req, res) {
           client.replyMessage(event.replyToken,line_message.getting_profile_message(is_user_message,userName,have_money))
         }
         else if (orginal_text == "/使用者"){
-          client.replyMessage(event.replyToken,{"type":"text","text":"歡迎"+userName+"使用我們的機器人，可以透過下方選單選擇您的功能，透過參加活動與拿紅包可以拿到樂幣，樂幣可以兌換商品。"})
+          client.replyMessage(event.replyToken,[line_message.getting_intro_message,{"type":"text","text":"歡迎"+userName+"使用我們的機器人，請參加活動與收取紅包得到樂幣，以免費兌換商品"}])
         }
         else if (orginal_text == "/活動流程")
         {
@@ -108,10 +108,15 @@ app.get('/notify', function(req, res) {
         
         break;
       case "postback":
-        if(event.postback.data=="main_page_next"){client.linkRichMenuToUser(userId,"richmenu-2fcea0b029a3f47117862f8298a2aa04")}
-        else if(event.postback.data=="main_page_return"){client.linkRichMenuToUser(userId,"richmenu-55542ba438c0e60c746c24edc4da87b7")}
-        else if(event.postback.data=="business_main_page_next"){client.linkRichMenuToUser(userId,"richmenu-d62d715409c73447326dad5dd5113b82")}
-        else if(event.postback.data=="business_main_page_return"){client.linkRichMenuToUser(userId,"richmenu-0242f368349fa13f1cc35b49ff22f14b")}
+        if(is_user=="管理者"){
+          if(event.postback.data=="main_page_next"){client.linkRichMenuToUser(userId,"richmenu-d62d715409c73447326dad5dd5113b82")}
+          else if(event.postback.data=="main_page_return"){client.linkRichMenuToUser(userId,"richmenu-0242f368349fa13f1cc35b49ff22f14b")}
+        }
+        else{
+          if(event.postback.data=="main_page_next"){client.linkRichMenuToUser(userId,"richmenu-2fcea0b029a3f47117862f8298a2aa04")}
+          else if(event.postback.data=="main_page_return"){client.linkRichMenuToUser(userId,"richmenu-55542ba438c0e60c746c24edc4da87b7")}  
+        }
+        
         break;
       case "beacon":
         admin.database().ref("user_attend_activity/").once("value",function(snapshot){
