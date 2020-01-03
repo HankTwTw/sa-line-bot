@@ -86,7 +86,7 @@ app.get('/notify', function(req, res) {
         }
         else if (orginal_text == "/我是商家")
         {
-          client.linkRichMenuToUser(userId,"richmenu-0f3d01ba9467c1739b15dfbd108a7683")
+          client.linkRichMenuToUser(userId,"richmenu-3221629749ff48c684e8f00fd4675aac")
         }
         else if (orginal_text == "/個人資料"){
           client.replyMessage(event.replyToken,line_message.getting_profile_message(is_user_message,userName,have_money))
@@ -110,11 +110,11 @@ app.get('/notify', function(req, res) {
       case "postback":
         if(is_user_message=="管理者"){
           if(event.postback.data=="main_page_next"||event.postback.data=="business_main_page_next"){client.linkRichMenuToUser(userId,"richmenu-3cecb51ae701601682288d9c289d3cba")}
-          else if(event.postback.data=="main_page_return"||event.postback.data=="business_main_page_return"){client.linkRichMenuToUser(userId,"richmenu-0f3d01ba9467c1739b15dfbd108a7683")}
+          else if(event.postback.data=="main_page_return"||event.postback.data=="business_main_page_return"){client.linkRichMenuToUser(userId,"richmenu-3221629749ff48c684e8f00fd4675aac")}
         }
         else{
           if(event.postback.data=="main_page_next"||event.postback.data=="business_main_page_next"){client.linkRichMenuToUser(userId,"richmenu-affd182d4711669d212beb811070c998")}
-          else if(event.postback.data=="main_page_return"||event.postback.data=="business_main_page_return"){client.linkRichMenuToUser(userId,"richmenu-0f3d01ba9467c1739b15dfbd108a7683")}  
+          else if(event.postback.data=="main_page_return"||event.postback.data=="business_main_page_return"){client.linkRichMenuToUser(userId,"richmenu-3221629749ff48c684e8f00fd4675aac")}  
         }
         
         break;
