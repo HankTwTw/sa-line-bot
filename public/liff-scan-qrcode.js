@@ -98,7 +98,7 @@ function scan(){
         // e.g. result = { value: "Hello LIFF app!" }
         const stringifiedResult = result.value;
         scan_user_Id = stringifiedResult;
-        firebase.database().ref("user/"+scan_user_Id).once("value",function(snap){
+        firebase.database().ref("wine/"+scan_user_Id).once("value",function(snap){
             document.getElementById("wind_pic").setAttribute("src",snap.val().img);
             // name = snap.val().name;
             // document.getElementById("button_scan").innerHTML="送給"+name;
