@@ -42,15 +42,22 @@ a, img { border: none; }
 .wenx_xx .wxzf_price { font-size: 45px; }
 .skf_xinf {  margin: 0 auto;width: 70%;height: 43px; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; line-height: 43px; background: #FFF; font-size: 25px; overflow: hidden; }
 .skf_xinf .bt { color: #767676; float: left; }
-.ljzf_but { width: 50%;border-radius: 3px; height: 45px; line-height: 45px; background: #44bf16; display: block; text-align: center; font-size: 16px; margin-top: 14px; color: #fff; }
+.ljzf_but { width: 30%;border-radius: 3px; height: 45px; line-height: 45px; background: #44bf16; display: block; text-align: center; font-size: 16px; margin-top: 14px; color: #fff; }
 .all{
     width: 80%;
     margin: 0 auto;
-    background: red;
+    
 }
 #typing_dollar{
     width: 50%;
     font-size: 45px;
+}
+#pic{
+    width: 100%;
+    height: 300px;
+}
+img{
+    width: 100%;
 }
 
 
@@ -59,13 +66,19 @@ a, img { border: none; }
 
 <div class="all">
     <div class="wenx_xx">
-        <div class="mz">紅包發送</div>
-        <div class="wxzf_price">$<input type="number" id="typing_dollar"></div>
+        <div class="mz">庫存管理</div>
+        <!-- <div class="wxzf_price">$<input type="number" id="typing_dollar"></div> -->
+        <div class = "pic">
+            <img  src="" alt="">
+        </div>
+       
     </div>
+
     <div class="skf_xinf">
-         <div class="all_w" id="button_scan" onclick="scan()"></div>
+         <div class="all_w" id="button_scan" onclick="scan()">掃描</div>
     </div>
-    <a href="javascript:void(0);" class="ljzf_but all_w" id ="submit_btn" onclick="send_money()">立即發送</a> 
+    
+ 
 </div>
 
         <div class="hello">

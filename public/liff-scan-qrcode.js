@@ -99,12 +99,13 @@ function scan(){
         const stringifiedResult = result.value;
         scan_user_Id = stringifiedResult;
         firebase.database().ref("user/"+scan_user_Id).once("value",function(snap){
-            name = snap.val().name;
-            document.getElementById("button_scan").innerHTML="送給"+name;
+            document.getElementById("wind_pic").setAttribute("src",snap.val().img);
+            // name = snap.val().name;
+            // document.getElementById("button_scan").innerHTML="送給"+name;
         })
         
     }).catch(err => {
-       console.log(err)
+    //    console.log(err)
         
     });
 }
