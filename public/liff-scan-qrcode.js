@@ -46,7 +46,7 @@ function initializeLiff(myLiffId) {
  */
 var have_money,scan_user_Id,name,user_Id,user_name;
 
-async function initializeApp() {
+function initializeApp() {
     var firebaseConfig = {
         apiKey: "AIzaSyB_v9rhe7uhubTFT8_-rNlCagL_QzSRxS8",
         authDomain: "sasa-ec240.firebaseapp.com",
