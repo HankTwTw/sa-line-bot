@@ -59,7 +59,7 @@ function initializeApp() {
       };
       // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-    document.getElementById("button_scan").innerHTML="請點選我掃描QRCODE";
+    // document.getElementById("button_scan").innerHTML="請點選我掃描QRCODE";
     
     scan()
 
@@ -88,6 +88,7 @@ function initializeApp() {
 }
 
 function scan(){
+    console.log("hi")
     liff.scanCode().then(result => {
         // e.g. result = { value: "Hello LIFF app!" }
         const stringifiedResult = result.value;
@@ -103,27 +104,27 @@ function scan(){
         
     });
 }
-function send_money(){
-    console.log(document.getElementById("typing_dollar").value)
-    if(document.getElementById("typing_dollar").value==""){
-        window.alert("請輸入金額")
-        return
-    }
-    var dollar = parseInt(document.getElementById("typing_dollar").value)
-    if(dollar>have_money){window.alert("您的錢只有"+have_money+"哦，請先參加活動賺取樂幣")}
-    else if(confirm("確定要給?"+name+dollar+"元嗎? 你有"+have_money+"元")){
-       firebase.database().ref("user/"+scan_user_Id).once("value",function(snap){
-           firebase.database().ref("user/"+scan_user_Id+"/cash").set(snap.val().cash+dollar)
-           firebase.database().ref("user/"+user_Id+"/cash").set(have_money-dollar)
-           var key = firebase.database().ref("record").push({tran_amount:dollar,type:"tran_cash",pay_name:user_name,get_name:name}).key
-           firebase.database().ref("record/"+key+"/"+user_Id).set("pay")
-           firebase.database().ref("record/"+key+"/"+scan_user_Id).set("get")
-           window.alert("發送成功")
-           liff.closeWindow();
-           fetch('https://sa-line-bot.herokuapp.com/notify?message='+user_name+"付給了"+name+"$"+dollar+"元紅包")
-       })
-    }
-}
+// function send_money(){
+//     console.log(document.getElementById("typing_dollar").value)
+//     if(document.getElementById("typing_dollar").value==""){
+//         window.alert("請輸入金額")
+//         return
+//     }
+//     var dollar = parseInt(document.getElementById("typing_dollar").value)
+//     if(dollar>have_money){window.alert("您的錢只有"+have_money+"哦，請先參加活動賺取樂幣")}
+//     else if(confirm("確定要給?"+name+dollar+"元嗎? 你有"+have_money+"元")){
+//        firebase.database().ref("user/"+scan_user_Id).once("value",function(snap){
+//            firebase.database().ref("user/"+scan_user_Id+"/cash").set(snap.val().cash+dollar)
+//            firebase.database().ref("user/"+user_Id+"/cash").set(have_money-dollar)
+//            var key = firebase.database().ref("record").push({tran_amount:dollar,type:"tran_cash",pay_name:user_name,get_name:name}).key
+//            firebase.database().ref("record/"+key+"/"+user_Id).set("pay")
+//            firebase.database().ref("record/"+key+"/"+scan_user_Id).set("get")
+//            window.alert("發送成功")
+//            liff.closeWindow();
+//            fetch('https://sa-line-bot.herokuapp.com/notify?message='+user_name+"付給了"+name+"$"+dollar+"元紅包")
+//        })
+//     }
+// }
 
 
  
