@@ -68,12 +68,6 @@ async function initializeApp() {
     liff.getProfile().then(function(profile) {
         user_name = profile.displayName
         user_Id=profile.userId
-        firebase.database().ref("user/"+profile.userId).on("value",function(snap){
-            console.log(snap.val().name)
-            
-            have_money=snap.val().cash;
-            
-    })
     }).catch(function(error) {
         window.alert('Error getting profile: ' + error);
     });
